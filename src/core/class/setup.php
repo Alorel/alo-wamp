@@ -20,7 +20,7 @@
          if (file_exists($path)) {
             _($msg . ' OK');
          } else {
-            mkdir(DIR_BIN, 777, true);
+            mkdir($path, 777, true);
             _($msg . ' created');
          }
 
