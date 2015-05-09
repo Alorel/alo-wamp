@@ -1,0 +1,9 @@
+composer.lock
+.idea
+vendor
+src/*.bat
+compile_exe.php
+icon.png
+src/bin/apache
+src/bin/php
+src/bin/mysql

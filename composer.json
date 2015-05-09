@@ -1,0 +1,28 @@
+{
+	"name":              "alorel/AloWAMP",
+	"description":       "This a currently in-development project for a easily updateable WAMP stack for Windows",
+	"minimum-stability": "stable",
+	"license":           "GPL-3.0+",
+	"homepage":          "https://alorel.github.io/AloWAMP/",
+	"keywords":          [
+		"WAMP",
+		"Windows",
+		"Apache",
+		"MySQL",
+		"PHP"
+	],
+	"authors":           [
+		{
+			"name":  "Art",
+			"email": "a.molcanovas@gmail.com",
+			"role":  "Developer"
+		}
+	],
+	"support":           {
+		"wiki":   "https://github.com/Alorel/AloWAMP/wiki",
+		"issues": "https://github.com/Alorel/AloWAMP/issues"
+	},
+	"require-dev":       {
+		"phpunit/phpunit": "dev-master"
+	}
+}
