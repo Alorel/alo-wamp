@@ -1,1 +1,0 @@
-start ..\core\settings.ini
