@@ -14,17 +14,28 @@
        */
       protected $dest_unzip;
 
+      /**
+       * Downloader instance
+       *
+       * @var \Downloader
+       */
+      protected $downloader;
+
+      protected $cleanup = false;
+
       protected function cleanup(array $files = []) {
-         $files = array_merge([$this->dest, $this->dest_unzip], $files);
+         if ($this->cleanup) {
+            $files = array_merge([$this->dest, $this->dest_unzip], $files);
 
-         foreach ($files as $f) {
-            if (file_exists($f)) {
-               _('Cleaning up ' . $f);
+            foreach ($files as $f) {
+               if (file_exists($f)) {
+                  _('Cleaning up ' . $f);
 
-               if (is_dir($f)) {
-                  shell_exec('rd /s /q "' . $f . '"');
-               } else {
-                  unlink($f);
+                  if (is_dir($f)) {
+                     shell_exec('rd /s /q "' . $f . '"');
+                  } else {
+                     unlink($f);
+                  }
                }
             }
          }

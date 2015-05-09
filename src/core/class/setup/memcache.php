@@ -2,8 +2,6 @@
 
    namespace Setup;
 
-   use \Downloader;
-
    class Memcache extends AbstractSetup {
 
       /**
@@ -13,13 +11,6 @@
        */
       const MEMCACHE_DOWNLOAD_SOURCE = 'https://github.com/Alorel/AloWAMP/archive/bin/memcached.zip';
 
-      /**
-       * Downloader instance
-       *
-       * @var Downloader
-       */
-      protected $downloader;
-
       function __construct() {
          $this->dest = DIR_TMP . 'memcache.zip';
          $this->dest_unzip = DIR_TMP . 'AloWAMP-bin-memcached' . DIRECTORY_SEPARATOR;
@@ -28,8 +19,24 @@
             ->copy();
       }
 
+      protected function copy() {
+         _('Copying unzipped contents..');
+
+         shell_exec('xcopy /s /e "' . rtrim($this->dest_unzip, DIRECTORY_SEPARATOR) . '" "' . rtrim(DIR_INDEX, DIRECTORY_SEPARATOR) . '"');
+
+         if (file_exists(DIR_INDEX . 'README.md')) {
+            unlink(DIR_INDEX . 'README.md');
+         }
+
+         if (file_exists(DIR_MEMCACHE)) {
+            _('Copy successful!');
+         } else {
+            die('Failed to copy. Terminating setup.');
+         }
+      }
+
       /**
-       * @return Memcache
+       * @return AbstractSetup
        */
       protected function unzip() {
          _('Unzipping...');
@@ -50,29 +57,13 @@
          return $this;
       }
 
-      protected function copy() {
-         _('Copying unzipped contents..');
-
-         shell_exec('xcopy /s /e "' . rtrim($this->dest_unzip, DIRECTORY_SEPARATOR) . '" "' . rtrim(DIR_INDEX, DIRECTORY_SEPARATOR) . '"');
-
-         if (file_exists(DIR_INDEX . 'README.md')) {
-            unlink(DIR_INDEX . 'README.md');
-         }
-
-         if (file_exists(DIR_MEMCACHE)) {
-            _('Copy successful!');
-         } else {
-            die('Failed to copy. Terminating setup.');
-         }
-      }
-
       /**
        * Downloads memcache
        *
        * @author Art <a.molcanovas@gmail.com>
        */
       protected function download() {
-         $this->downloader = new Downloader(self::MEMCACHE_DOWNLOAD_SOURCE, $this->dest);
+         $this->downloader = new \Downloader(self::MEMCACHE_DOWNLOAD_SOURCE, $this->dest);
 
          if ($this->downloader->download()) {
             _('Download successful. Setting up Memcache...');

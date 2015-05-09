@@ -10,4 +10,5 @@
       ->checkDir(DIR_TMP, 'tmp folder')
       ->checkDir(DIR_BIN, 'binaries folder')
       ->checkWWW()
-      ->checkMemcache();
+      ->checkMemcache()
+      ->checkPHP();

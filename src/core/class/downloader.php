@@ -61,6 +61,14 @@
          $this->curl->exec();
          fclose($this->fp);
 
-         return $this->curl->errno() === CURLE_OK;
+         $errno = $this->curl->errno();
+
+         if ($errno === CURLE_OK) {
+            return true;
+         } else {
+            _($this->curl->error());
+
+            return false;
+         }
       }
    }

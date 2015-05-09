@@ -30,6 +30,28 @@
       /**
        * @return Setup
        */
+      function checkPHP() {
+         if (!file_exists(DIR_PHP)) {
+            _('Creating PHP directory');
+            mkdir(DIR_PHP, 777, true);
+         }
+
+         $scan = array_filter(scandir(DIR_PHP), function ($ent) {
+            return $ent != '.' && $ent != '..';
+         });
+
+         if (!empty($scan)) {
+            _('PHP dir OK');
+         } else {
+            new \Setup\PHP();
+         }
+
+         return $this;
+      }
+
+      /**
+       * @return Setup
+       */
       function checkDateTimezone() {
          if (Settings::$s->{'php_date_timezone'}) {
             _('PHP\'s date.timezone OK');
