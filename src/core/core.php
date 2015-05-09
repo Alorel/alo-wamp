@@ -84,6 +84,10 @@
       return isset($var) ? $var : null;
    }
 
+   function _($str) {
+      echo $str . PHP_EOL;
+   }
+
    require_once DIR_CORE . 'class' . DIRECTORY_SEPARATOR . 'handler.php';
 
    spl_autoload_register('Handler::autoloader');

@@ -20,7 +20,7 @@
             if (file_exists($file)) {
                include $file;
             } else {
-               echo 'The route ' . $route . ' is invalid.' . PHP_EOL;
+               _('The route ' . $route . ' is invalid.');
             }
          }
       }

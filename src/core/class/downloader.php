@@ -46,7 +46,7 @@
             $status = ($downloaded / $download_size) * 100;
             if ($status != $this->last_reported_status) {
                $this->last_reported_status = $status;
-               echo round(($downloaded / $download_size) * 100, 3) . '%' . PHP_EOL;
+               _(round(($downloaded / $download_size) * 100, 3) . '%');
             }
          }
       }

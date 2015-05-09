@@ -15,13 +15,45 @@
        */
       function checkTMP() {
          if (file_exists(DIR_TMP)) {
-            echo 'Temporary directory OK';
+            _('Temporary directory OK');
          } else {
             mkdir(DIR_TMP, 777, true);
-            echo 'Temporary directory created';
+            _('Temporary directory created');
          }
 
-         echo PHP_EOL;
+         return $this;
+      }
+
+      /**
+       * Checks if a directory exists
+       *
+       * @return Setup
+       */
+      function checkDir($path, $msg = null) {
+         if (!$msg) {
+            $msg = $path;
+         }
+
+         if (file_exists($path)) {
+            _($msg . ' OK');
+         } else {
+            mkdir(DIR_BIN, 777, true);
+            _($msg . ' created');
+         }
+
+         return $this;
+      }
+
+      /**
+       * @return Setup
+       */
+      function checkBin() {
+         if (file_exists(DIR_BIN)) {
+            _('bin directory OK');
+         } else {
+            mkdir(DIR_BIN, 777, true);
+            _('Bin directory created');
+         }
 
          return $this;
       }
@@ -33,17 +65,12 @@
        */
       function checkMemcache() {
          if (file_exists(DIR_MEMCACHE)) {
-            echo 'Memcache OK';
+            _('Memcache OK');
          } else {
-            if (IO::readline('Memcache not found. Would you like to download it? [Y/N]') == 'y') {
-               echo 'Contacting download server...' . PHP_EOL;
-               new \Setup\Memcache();
-            } else {
-               die('Setup aborted');
-            }
+            _('Memcache not found. Contacting download server...');
+            sleep(3);
+            new \Setup\Memcache();
          }
-
-         echo PHP_EOL;
 
          return $this;
       }
