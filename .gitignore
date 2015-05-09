@@ -7,3 +7,4 @@ icon.ico
 src/tmp
 src/bin
 src/www
+src/core/settings.ini

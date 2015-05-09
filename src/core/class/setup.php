@@ -40,11 +40,11 @@
                $this->checkDateTimezone();
             } else {
                $split = explode('/', $timezone);
-               foreach ($timezone as &$t) {
+               foreach ($split as &$t) {
                   $t = trim(ucfirst($t));
                }
 
-               Settings::$s->php_date_timezone = implode('/', $timezone);
+               Settings::$s->php_date_timezone = implode('/', $split);
                Settings::$s->save();
                _('Timezone set');
             }
