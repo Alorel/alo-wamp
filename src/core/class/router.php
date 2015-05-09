@@ -14,7 +14,14 @@
        */
       function route() {
          if (!defined('PHPUNIT_RUNNING')) {
+            $route = trim(strtolower(get(IO::$argv[0])));
+            $file = DIR_CORE . 'routes' . DIRECTORY_SEPARATOR . $route . '.php';
 
+            if (file_exists($file)) {
+               include $file;
+            } else {
+               echo 'The route ' . $route . ' is invalid.' . PHP_EOL;
+            }
          }
       }
 

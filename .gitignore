@@ -3,7 +3,5 @@ composer.lock
 vendor
 src/*.bat
 compile_exe.php
-icon.png
-src/bin/apache
-src/bin/php
-src/bin/mysql
+icon.ico
+src/tmp

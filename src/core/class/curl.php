@@ -1,10 +1,5 @@
 <?php
 
-   if (!defined('GEN_START')) {
-      http_response_code(404);
-      die();
-   }
-
    /**
     * Object-oriented cURL wrapper
     *
@@ -64,14 +59,33 @@
             $this->is_open = true;
             curl_setopt_array($this->ch, [
                CURLOPT_RETURNTRANSFER => true,
-               CURLOPT_SSLVERSION     => 3,
-               CURLOPT_SSL_VERIFYPEER => true,
+               CURLOPT_SSL_VERIFYPEER => false,
                CURLOPT_FOLLOWLOCATION => true
             ]);
 
             if ($url) {
                $this->setURL($url);
             }
+         }
+      }
+
+      /**
+       * Sets CURLOPT_NOPROGRESS to FALSE and supplies the progress function
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @param callable $callable The function
+       * @return bool
+       */
+      function setProgressFunction($callable) {
+         if (!is_callable($callable)) {
+            return false;
+         } else {
+            curl_setopt_array($this->ch, [
+               CURLOPT_NOPROGRESS       => false,
+               CURLOPT_PROGRESSFUNCTION => $callable
+            ]);
+
+            return true;
          }
       }
 

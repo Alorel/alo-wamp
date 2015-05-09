@@ -31,6 +31,59 @@
     */
    define('PHP_EXECUTABLE', DIR_PHP_ENGINE . 'php.exe');
 
+   /**
+    * Binaries directory
+    *
+    * @var string
+    */
+   define('DIR_BIN', DIR_INDEX . 'bin' . DIRECTORY_SEPARATOR);
+
+   /**
+    * Memcache directory
+    *
+    * @var string
+    */
+   define('DIR_MEMCACHE', DIR_BIN . 'memcache' . DIRECTORY_SEPARATOR);
+
+   /**
+    * Apache directory
+    *
+    * @var string
+    */
+   define('DIR_APACHE', DIR_BIN . 'apache' . DIRECTORY_SEPARATOR);
+
+   /**
+    * PHP directory
+    *
+    * @var string
+    */
+   define('DIR_PHP', DIR_BIN . 'php' . DIRECTORY_SEPARATOR);
+
+   /**
+    * MySQL directory
+    *
+    * @var string
+    */
+   define('DIR_MYSQL', DIR_BIN . 'mysql' . DIRECTORY_SEPARATOR);
+
+   /**
+    * Temporary directory
+    *
+    * @var string
+    */
+   define('DIR_TMP', DIR_INDEX . 'tmp' . DIRECTORY_SEPARATOR);
+
+   /**
+    * Shortcut for isset($var) ? $var : null
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    * @param mixed $var Reference to the variable
+    * @return mixed|null The variable or NULL if it's not defined
+    */
+   function get(&$var) {
+      return isset($var) ? $var : null;
+   }
+
    require_once DIR_CORE . 'class' . DIRECTORY_SEPARATOR . 'handler.php';
 
    spl_autoload_register('Handler::autoloader');
