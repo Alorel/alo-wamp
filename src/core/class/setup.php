@@ -27,6 +27,32 @@
          return $this;
       }
 
+      /**
+       * @return Setup
+       */
+      function checkDateTimezone() {
+         if (Settings::$s->{'php_date_timezone'}) {
+            _('PHP\'s date.timezone OK');
+         } else {
+            $timezone = trim(IO::readline('Please input the timezone for PHP, e.g. Europe/London]'));
+
+            if (!$timezone) {
+               $this->checkDateTimezone();
+            } else {
+               $split = explode('/', $timezone);
+               foreach ($timezone as &$t) {
+                  $t = trim(ucfirst($t));
+               }
+
+               Settings::$s->php_date_timezone = implode('/', $timezone);
+               Settings::$s->save();
+               _('Timezone set');
+            }
+         }
+
+         return $this;
+      }
+
       function checkWWW() {
          if (file_exists(DIR_WWW)) {
             _('www dir OK');

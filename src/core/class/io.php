@@ -15,13 +15,6 @@
       public static $argv;
 
       /**
-       * Settings array
-       *
-       * @var array
-       */
-      public static $settings;
-
-      /**
        * Clears previous output
        *
        * @author Art <a.molcanovas@gmail.com>
@@ -66,39 +59,7 @@
          return $r;
       }
 
-      /**
-       * Saves the settings array
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       */
-      static function saveSettings() {
-         $file = DIR_CORE . 'settings.ini';
-
-         if (file_exists($file)) {
-            unlink($file);
-         }
-
-         file_put_contents($file, empty(self::$settings) ? '' : Format::array_to_ini(self::$settings));
-      }
-
-      /**
-       * Loads the settings
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       */
-      static function loadSettings() {
-         $file = DIR_CORE . 'settings.ini';
-
-         if (!file_exists($file)) {
-            file_put_contents($file, '');
-            self::$settings = [];
-         } else {
-            $contents = file_get_contents($file);
-            self::$settings = $contents ? Format::ini_to_array($contents, false) : [];
-         }
-      }
    }
 
    IO::$argv = $_SERVER['argv'];
    array_shift(IO::$argv);
-   IO::loadSettings();

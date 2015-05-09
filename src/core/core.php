@@ -93,8 +93,8 @@
    require_once DIR_CORE . 'class' . DIRECTORY_SEPARATOR . 'handler.php';
 
    spl_autoload_register('Handler::autoloader');
-
    IO::echo_lines();
+   new Settings();
 
    $r = new Router();
    $r->route();
