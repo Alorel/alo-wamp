@@ -17,9 +17,9 @@
        */
       protected $links;
 
-      protected $version = '5.6.8';
+      protected $version;
 
-      protected $unzipped_destination = 'W:\Dropbox\sync\dev\misc\AloWAMP\src\bin\php\5.6.8\\';
+      protected $unzipped_destination;
 
       function __construct() {
          $this->dest = DIR_TMP . 'php.zip';
