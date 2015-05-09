@@ -28,6 +28,20 @@
          return $r;
       }
 
+      static function formatScandir(&$scandir) {
+         $scandir = array_filter($scandir, function ($r) {
+            return $r != '.' && $r != '..';
+         });
+
+         $r = [];
+
+         foreach ($scandir as $d) {
+            $r[] = $d;
+         }
+
+         $scandir = $r;
+      }
+
       /**
        * Turns an ini to an array.
        *

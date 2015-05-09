@@ -113,11 +113,20 @@
 
          if (file_exists($this->unzipped_destination . 'php.ini-development') || file_exists($this->unzipped_destination . 'php.ini')) {
             _('Copy successful!');
-            SET::$s->php_version = $this->version;
-            SET::$s->save();
+            $this->updateSettings();
          } else {
             die('Failed to copy. Terminating setup.');
          }
+
+         return $this;
+      }
+
+      /**
+       * @return PHP
+       */
+      protected function updateSettings() {
+         SET::$s->php_version = $this->version;
+         SET::$s->save();
 
          return $this;
       }
@@ -142,19 +151,28 @@
                $this->promptDownload();
             } else {
                $this->version = $io;
-               $this->downloader = new Downloader($this->links[$io], $this->dest);
-
-               if ($this->downloader->download()) {
-                  _('Download successful. Setting up PHP ' . $io);
-                  sleep(1);
-               } else {
-                  die('Download failed. Aborting setup.');
-               }
+               $this->download();
 
                return $this;
             }
          } else {
             die('Aborting.');
+         }
+
+         return $this;
+      }
+
+      /**
+       * @return PHP
+       */
+      protected function download() {
+         $this->downloader = new Downloader($this->links[$this->version], $this->dest);
+
+         if ($this->downloader->download()) {
+            _('Download successful. Setting up PHP ' . $this->version);
+            sleep(1);
+         } else {
+            die('Download failed. Aborting setup.');
          }
 
          return $this;

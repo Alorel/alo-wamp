@@ -36,9 +36,8 @@
             mkdir(DIR_PHP, 777, true);
          }
 
-         $scan = array_filter(scandir(DIR_PHP), function ($ent) {
-            return $ent != '.' && $ent != '..';
-         });
+         $scan = scandir(DIR_PHP);
+         Format::formatScandir($scan);
 
          if (!empty($scan)) {
             _('PHP dir OK');
