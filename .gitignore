@@ -1,7 +1,6 @@
-composer.lock
 .idea
-vendor
 src/*.bat
+src/wamp/*.bat
 compile_exe.php
 icon.ico
 src/tmp
