@@ -113,7 +113,7 @@
 
          if (file_exists($this->unzipped_destination . 'php.ini-development') || file_exists($this->unzipped_destination . 'php.ini')) {
             _('Copy successful!');
-            SET::$s->php_executable = $this->unzipped_destination . 'php.exe';
+            SET::$s->php_version = $this->version;
             SET::$s->save();
          } else {
             die('Failed to copy. Terminating setup.');
