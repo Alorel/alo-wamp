@@ -41,6 +41,28 @@
          }
       }
 
+      /**
+       * @return PHP
+       */
+      protected function unzip() {
+         _('Unzipping...');
+         $zip = new \ZipArchive();
+         $res = $zip->open($this->dest);
+
+         if ($res === true) {
+            if (file_exists($this->dest_unzip)) {
+               rmdir($this->dest_unzip);
+            }
+
+            $zip->extractTo($this->dest_unzip);
+            $zip->close();
+         } else {
+            die('Failed to unzip ' . $this->dest . '. Terminating.');
+         }
+
+         return $this;
+      }
+
       function __destruct() {
          $this->cleanup();
       }

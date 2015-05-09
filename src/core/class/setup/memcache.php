@@ -67,7 +67,7 @@
 
          if ($this->downloader->download()) {
             _('Download successful. Setting up Memcache...');
-            sleep(3);
+            sleep(1);
          } else {
             die('Download failed. Aborting setup.');
          }

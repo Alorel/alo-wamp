@@ -99,7 +99,7 @@
             _('Memcache OK');
          } else {
             _('Memcache not found. Contacting download server...');
-            sleep(3);
+            sleep(1);
             new \Setup\Memcache();
          }
 
