@@ -73,6 +73,8 @@
     */
    define('DIR_TMP', DIR_INDEX . 'tmp' . DIRECTORY_SEPARATOR);
 
+   define('DIR_WWW', DIR_INDEX . 'www' . DIRECTORY_SEPARATOR);
+
    /**
     * Shortcut for isset($var) ? $var : null
     *

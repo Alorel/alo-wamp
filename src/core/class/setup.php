@@ -8,23 +8,6 @@
    class Setup {
 
       /**
-       * Checks and creates the temporary directory
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       * @return Setup
-       */
-      function checkTMP() {
-         if (file_exists(DIR_TMP)) {
-            _('Temporary directory OK');
-         } else {
-            mkdir(DIR_TMP, 777, true);
-            _('Temporary directory created');
-         }
-
-         return $this;
-      }
-
-      /**
        * Checks if a directory exists
        *
        * @return Setup
@@ -44,15 +27,15 @@
          return $this;
       }
 
-      /**
-       * @return Setup
-       */
-      function checkBin() {
-         if (file_exists(DIR_BIN)) {
-            _('bin directory OK');
+      function checkWWW() {
+         if (file_exists(DIR_WWW)) {
+            _('www dir OK');
          } else {
-            mkdir(DIR_BIN, 777, true);
-            _('Bin directory created');
+            _('www directory not found. Creating...');
+
+            $dir = DIR_WWW . 'my-default-website' . DIRECTORY_SEPARATOR;
+            mkdir($dir, 777, true);
+            file_put_contents($dir . 'index.html', 'Yep, you\'re up.');
          }
 
          return $this;
