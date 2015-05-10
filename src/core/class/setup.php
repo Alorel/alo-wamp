@@ -31,21 +31,35 @@
        * @return Setup
        */
       function checkPHP() {
-         if (!file_exists(DIR_PHP)) {
-            _('Creating PHP directory');
-            mkdir(DIR_PHP, 777, true);
+         return $this->checkBinaries(DIR_PHP, 'PHP directory', '\Setup\PHP');
+      }
+
+      /**
+       * @param string $dir         dir to scan
+       * @param string $message     scan identifier
+       * @param string $setup_class Setup class name
+       * @return Setup
+       */
+      protected function checkBinaries($dir, $message, $setup_class) {
+         if (!file_exists($dir)) {
+            _('Creating ' . $message);
+            mkdir($dir, 777, true);
          }
 
-         $scan = scandir(DIR_PHP);
+         $scan = scandir($dir);
          Format::formatScandir($scan);
 
          if (!empty($scan)) {
-            _('PHP dir OK');
+            _($message . ' OK');
          } else {
-            new \Setup\PHP();
+            new $setup_class();
          }
 
          return $this;
+      }
+
+      function checkApache() {
+         return $this->checkBinaries(DIR_APACHE, 'Apache directory', '\Setup\Apache');
       }
 
       /**

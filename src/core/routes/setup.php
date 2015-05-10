@@ -11,4 +11,5 @@
       ->checkDir(DIR_BIN, 'binaries folder')
       ->checkWWW()
       ->checkMemcache()
-      ->checkPHP();
+      ->checkPHP()
+      ->checkApache();

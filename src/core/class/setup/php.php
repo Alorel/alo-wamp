@@ -2,24 +2,14 @@
 
    namespace Setup;
 
-   use \Downloader;
    use \Settings as SET;
 
-   class PHP extends AbstractSetup {
+   class PHP extends AbstractBinSetup {
 
       /**
        * @var \BinChecker\PHP
        */
       protected $binchecker;
-
-      /**
-       * @var array
-       */
-      protected $links;
-
-      protected $version;
-
-      protected $unzipped_destination;
 
       function __construct() {
          $this->dest = DIR_TMP . 'php.zip';
@@ -101,7 +91,7 @@
          _('Copying unzipped contents..');
 
          $source = rtrim($this->dest_unzip, DIRECTORY_SEPARATOR);
-         $this->unzipped_destination = DIR_BIN . 'php' . DIRECTORY_SEPARATOR . $this->version;
+         $this->unzipped_destination = DIR_PHP . $this->version;
 
          if (!file_exists($this->unzipped_destination)) {
             mkdir($this->unzipped_destination . DIRECTORY_SEPARATOR, 777, true);
@@ -127,53 +117,6 @@
       protected function updateSettings() {
          SET::$s->php_version = $this->version;
          SET::$s->save();
-
-         return $this;
-      }
-
-      /**
-       * @return PHP
-       */
-      protected function promptDownload() {
-         if (!empty($this->links)) {
-            $version_numbers = array_keys($this->links);
-            _('The following versions were found for download: ' . PHP_EOL . "\t"
-               . implode(PHP_EOL . "\t", $version_numbers));
-
-            $io = trim(\IO::readline('Which version would you like to download? Input N to abort'));
-
-            if (!$io) {
-               $this->promptDownload();
-            } elseif ($io == 'n') {
-               die('Aborting.');
-            } elseif (!isset($this->links[$io])) {
-               _('The version you selected is not available for download.');
-               $this->promptDownload();
-            } else {
-               $this->version = $io;
-               $this->download();
-
-               return $this;
-            }
-         } else {
-            die('Aborting.');
-         }
-
-         return $this;
-      }
-
-      /**
-       * @return PHP
-       */
-      protected function download() {
-         $this->downloader = new Downloader($this->links[$this->version], $this->dest);
-
-         if ($this->downloader->download()) {
-            _('Download successful. Setting up PHP ' . $this->version);
-            sleep(1);
-         } else {
-            die('Download failed. Aborting setup.');
-         }
 
          return $this;
       }
