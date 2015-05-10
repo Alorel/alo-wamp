@@ -23,36 +23,45 @@
             ->unzip()
             ->copy()
             ->renameIni()
-            ->setTimezone();
+            ->editIni();
       }
 
-      protected function setTimezone() {
+      protected function editIni() {
          $timezone = SET::$s->php_date_timezone;
          $ini = $this->unzipped_destination . 'php.ini';
 
          if (!$timezone) {
             $timezone = 'Europe/London';
+            _('Your timezone setting wasn\'t found. Setting it to Europe/London.');
             SET::$s->php_date_timezone = $timezone;
             SET::$s->save();
          }
 
-         //Only continue if timezone isn't already set
-         if (!isset(parse_ini_file($ini)['date.timezone'])) {
-            $contents = file_get_contents($ini);
+         $contents = file_get_contents($ini);
 
-            if ($contents) {
-               $contents = str_replace(';date.timezone =', 'date.timezone = ' . $timezone, $contents);
+         if ($contents) {
+            $contents = str_ireplace([
+               ';date.timezone =',
+               '; extension_dir = "ext"',
+               ';error_log = php_errors.log'
+            ], [
+               'date.timezone = ' . $timezone,
+               'extension_dir = "ext"',
+               'error_log = ../../../logs/php/php_errors.log'
+            ], $contents);
 
-               if (file_put_contents($ini, $contents) !== false) {
-                  _('Set the timezone in php.ini to ' . $timezone);
-               } else {
-                  _('Failed to set the timezone in php.ini. You will have to set the timezone yourself.');
-               }
+            if (file_put_contents($ini, $contents) !== false) {
+               _('php.ini edited');
             } else {
-               _('Failed to open php.ini for editing. You will have to set the timezone yourself.');
+               $msg = 'Failed to edit php.ini. You will have to set the following yourself:' . PHP_EOL
+                  . "\t Find ';date.timezone =' and change it to 'date.timezone = ' . $timezone'" . PHP_EOL
+                  . "\t Find '; extension_dir = \"ext\"' and change it to 'extension_dir = \"ext\"'" . PHP_EOL
+                  . "\t Find ';error_log = php_errors.log' and change it to 'error_log = ../../../logs/php/php_errors.log'";
+               _($msg . PHP_EOL . 'Press ENTER to continue');
+               \IO::readline();
             }
          } else {
-            _('date.timezone already had a preset value - no change made');
+            _('Failed to open php.ini for editing. You will have to set the timezone yourself.');
          }
       }
 

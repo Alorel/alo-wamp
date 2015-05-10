@@ -5,18 +5,18 @@
    use \Format;
    use \IO;
 
-   class PHP extends \Setup\PHP {
+   class Apache extends \Setup\Apache {
 
       protected $installed_vers;
 
       /**
-       * @return PHP
+       * @return Apache
        */
       protected function getInstalledVers() {
-         $dir = DIR_PHP;
+         $dir = DIR_APACHE;
 
          if (!file_exists($dir)) {
-            die('PHP directory not found');
+            die('Apache directory not found');
          } else {
             $scan = scandir($dir);
             Format::formatScandir($scan);
@@ -27,7 +27,7 @@
       }
 
       /**
-       * @return PHP
+       * @return Apache
        */
       protected function filterLinks() {
          foreach ($this->installed_vers as $v) {
@@ -40,7 +40,7 @@
       }
 
       protected function updateSettings() {
-         $io = IO::readline('Would you like to set this version as the default PHP interpreter for future installations? [Y/N]');
+         $io = IO::readline('Would you like to set this version as the default Apache version for future installations? [Y/N]');
 
          if ($io == 'y') {
             parent::updateSettings();

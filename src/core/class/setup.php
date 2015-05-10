@@ -99,6 +99,9 @@
             file_put_contents($dir . 'index.html', 'Yep, you\'re up.');
          }
 
+         \Settings::$s->web_dir = 'my-default-website';
+         \Settings::$s->save();
+
          return $this;
       }
 

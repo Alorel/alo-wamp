@@ -75,6 +75,8 @@
 
    define('DIR_WWW', DIR_INDEX . 'www' . DIRECTORY_SEPARATOR);
 
+   define('DIR_LOGS', DIR_INDEX . 'logs' . DIRECTORY_SEPARATOR);
+
    /**
     * Shortcut for isset($var) ? $var : null
     *

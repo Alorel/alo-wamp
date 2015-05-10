@@ -21,7 +21,7 @@
        */
       protected $downloader;
 
-      protected $cleanup = true;
+      protected $cleanup = false;
 
       protected function cleanup(array $files = []) {
          if ($this->cleanup) {
@@ -51,7 +51,7 @@
 
          if ($res === true) {
             if (file_exists($this->dest_unzip)) {
-               rmdir($this->dest_unzip);
+               shell_exec('rd /s /q "' . rtrim($this->dest_unzip, '\\/') . '"');
             }
 
             $zip->extractTo($this->dest_unzip);
