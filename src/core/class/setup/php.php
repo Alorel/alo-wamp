@@ -39,6 +39,8 @@
 
          $contents = file_get_contents($ini);
 
+         $err_log_dir = '"' . str_replace(DIRECTORY_SEPARATOR, '/', DIR_LOGS) . 'php/php_errors.log"';
+
          if ($contents) {
             $contents = str_ireplace([
                ';date.timezone =',
@@ -47,7 +49,7 @@
             ], [
                'date.timezone = ' . $timezone,
                'extension_dir = "ext"',
-               'error_log = ../../../logs/php/php_errors.log'
+               'error_log = ' . $err_log_dir . ''
             ], $contents);
 
             if (file_put_contents($ini, $contents) !== false) {
@@ -56,13 +58,15 @@
                $msg = 'Failed to edit php.ini. You will have to set the following yourself:' . PHP_EOL
                   . "\t Find ';date.timezone =' and change it to 'date.timezone = ' . $timezone'" . PHP_EOL
                   . "\t Find '; extension_dir = \"ext\"' and change it to 'extension_dir = \"ext\"'" . PHP_EOL
-                  . "\t Find ';error_log = php_errors.log' and change it to 'error_log = ../../../logs/php/php_errors.log'";
+                  . "\t Find ';error_log = php_errors.log' and change it to 'error_log = $err_log_dir'";
                _($msg . PHP_EOL . 'Press ENTER to continue');
                \IO::readline();
             }
          } else {
             _('Failed to open php.ini for editing. You will have to set the timezone yourself.');
          }
+
+         return $this;
       }
 
       /**
@@ -94,7 +98,7 @@
       }
 
       /**
-       * PHP
+       * @return PHP
        */
       protected function copy() {
          _('Copying unzipped contents..');

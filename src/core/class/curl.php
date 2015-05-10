@@ -128,7 +128,10 @@
        * @return string
        */
       function __toString() {
-         return \lite_debug($this);
+         ob_start();
+         var_dump($this);
+
+         return ob_get_clean();
       }
 
       /**

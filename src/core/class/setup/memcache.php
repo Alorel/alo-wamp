@@ -36,7 +36,7 @@
       }
 
       /**
-       * @return AbstractSetup
+       * @return Memcache
        */
       protected function unzip() {
          _('Unzipping...');

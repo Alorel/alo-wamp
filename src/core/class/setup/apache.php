@@ -28,6 +28,20 @@
             ->editHTTPD();
       }
 
+      /**
+       * @return Apache
+       */
+      protected function promptDownload() {
+         return parent::promptDownload();
+      }
+
+      /**
+       * @return Apache
+       */
+      protected function unzip() {
+         return parent::unzip();
+      }
+
       protected function checkWebDir() {
          if (!SET::$s->web_dir) {
             $new_dir = \IO::readline('Your default website name was not found - please enter a name (defaults to my-default-website if left empty)');
@@ -61,6 +75,16 @@
             } else {
                _('Editing httpd.conf');
 
+               $php_dir = DIR_PHP . SET::$s->php_version;
+
+               $php5_module_loc = '"' . $php_dir . DIRECTORY_SEPARATOR . 'php5apache2_4.dll"';
+               $php5_module_replace = 'PHPIniDir "' . $php_dir . '"' . PHP_EOL
+                  . 'LoadModule php5_module ' . $php5_module_loc . PHP_EOL
+                  . 'LoadModule access_compat_module modules/mod_access_compat.so';
+
+               $htdocs = DIR_WWW . SET::$s->web_dir;
+               $log_dir = DIR_LOGS . 'apache' . DIRECTORY_SEPARATOR;
+
                $contents = str_ireplace([
                   'LoadModule access_compat_module modules/mod_access_compat.so',
                   'ServerRoot "c:/Apache24"',
@@ -72,14 +96,14 @@
                   '"logs/access.log"',
                   'AddType application/x-gzip .gz .tgz'
                ], [
-                  'LoadModule php5_module ../../php/' . SET::$s->php_version . '/php5apache2_4.dll' . PHP_EOL . 'LoadModule access_compat_module modules/mod_access_compat.so',
+                  $php5_module_replace,
                   'ServerRoot "' . rtrim($apache_dir, DIRECTORY_SEPARATOR) . '"',
                   'Listen 80' . PHP_EOL . 'Listen 443',
                   'ServerName localhost:80',
-                  '"../../../www/' . SET::$s->web_dir . '"',
+                  '"' . $htdocs . '"',
                   'DirectoryIndex index.php index.php3 index.html index.htm',
-                  '"../../../logs/apache/error.log"',
-                  '"../../../logs/apache/access.log"',
+                  '"' . $log_dir . 'error.log"',
+                  '"' . $log_dir . 'access.log"',
                   'AddType application/x-gzip .gz .tgz' . PHP_EOL . "\tAddType application/x-httpd-php .php" . PHP_EOL . "\tAddType application/x-httpd-php .php3"
                ], $contents);
 

@@ -22,11 +22,14 @@
       protected $dest;
 
       /**
-       * The last reported status
-       *
-       * @var string
+       * @var int
        */
-      protected $last_reported_status;
+      protected $last_report_time;
+
+      /**
+       * @var float
+       */
+      protected $last_report_status;
 
       /**
        * Output
@@ -42,13 +45,27 @@
       }
 
       function progressFunction($resource, $download_size, $downloaded, $upload_size, $uploaded) {
+         $ed = $size = false;
+
          if ($download_size > 0 && $downloaded > 0) {
-            $status = ($downloaded / $download_size) * 100;
-            if ($status != $this->last_reported_status) {
-               $this->last_reported_status = $status;
-               _(round(($downloaded / $download_size) * 100, 3) . '%');
+            $ed = $downloaded;
+            $size = $download_size;
+         } elseif ($upload_size > 0 && $uploaded > 0) {
+            $ed = $uploaded;
+            $size = $upload_size;
+         }
+
+         if ($ed && $size) {
+            $status = round(($ed / $size) * 100, 3);
+            $time = time();
+            if ($status != $this->last_report_status && ($time != $this->last_report_time || $status == 100)) {
+               $this->last_report_time = $time;
+               $this->last_report_status = $status;
+               _(str_pad($status, 6, ' ', STR_PAD_RIGHT) . '%');
             }
          }
+
+         unset($resource);
       }
 
       function download() {

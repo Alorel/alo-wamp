@@ -96,11 +96,15 @@
 
             $dir = DIR_WWW . 'my-default-website' . DIRECTORY_SEPARATOR;
             mkdir($dir, 777, true);
-            file_put_contents($dir . 'index.html', 'Yep, you\'re up.');
+
+            copy(DIR_CORE . 'file_placeholders' . DIRECTORY_SEPARATOR . 'sample_index.php', $dir . 'index.php');
          }
 
-         \Settings::$s->web_dir = 'my-default-website';
-         \Settings::$s->save();
+         if (!\Settings::$s->web_dir) {
+            _('Set default website directory in AloWAMP settings');
+            \Settings::$s->web_dir = 'my-default-website';
+            \Settings::$s->save();
+         }
 
          return $this;
       }

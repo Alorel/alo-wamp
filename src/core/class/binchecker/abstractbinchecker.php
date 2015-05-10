@@ -2,6 +2,8 @@
 
    namespace BinChecker;
 
+   use \cURL;
+
    abstract class AbstractBinChecker {
 
       /**
@@ -36,12 +38,12 @@
       }
 
       /**
-       * @return AbstractChecker
+       * @return AbstractBinChecker
        */
       protected abstract function downloadPage();
 
       /**
-       * @return AbstractChecker
+       * @return AbstractBinChecker
        */
       protected abstract function parsePage();
    }
