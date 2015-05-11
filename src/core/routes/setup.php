@@ -15,4 +15,5 @@
       ->checkWWW()
       ->checkMemcache()
       ->checkPHP()
-      ->checkApache();
+      ->checkApache()
+      ->checkMySQL();

@@ -43,6 +43,22 @@
       }
 
       /**
+       * @param int $bytes Filesize in bytes
+       * @return string
+       */
+      static function filesize($bytes) {
+         if (!is_numeric($bytes) || $bytes < 1024) {
+            return $bytes . ' B';
+         } elseif ($bytes < 1048576) {
+            return round($bytes / 1024, 3) . ' KB';
+         } elseif ($bytes < 1073741824) {
+            return round($bytes / 1048576, 3) . ' MB';
+         } else {
+            return round($bytes / 1073741824, 3) . ' GB';
+         }
+      }
+
+      /**
        * Turns an ini to an array.
        *
        * @param string $var     Ini contents or filepath

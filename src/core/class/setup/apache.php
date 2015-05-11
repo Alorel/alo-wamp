@@ -19,8 +19,6 @@
          $this->binchecker = new \BinChecker\Apache();
          $this->links = $this->binchecker->getLinks();
 
-         $this->version = '2.4.12';
-
          $this
             ->promptDownload()
             ->unzip()

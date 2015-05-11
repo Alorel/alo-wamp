@@ -60,7 +60,8 @@
             curl_setopt_array($this->ch, [
                CURLOPT_RETURNTRANSFER => true,
                CURLOPT_SSL_VERIFYPEER => false,
-               CURLOPT_FOLLOWLOCATION => true
+               CURLOPT_FOLLOWLOCATION => true,
+               CURLOPT_USERAGENT      => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36'
             ]);
 
             if ($url) {

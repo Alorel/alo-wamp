@@ -21,7 +21,7 @@
        */
       protected $downloader;
 
-      protected $cleanup = true;
+      protected $cleanup = false;
 
       protected function cleanup(array $files = []) {
          if ($this->cleanup) {

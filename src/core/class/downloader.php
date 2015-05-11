@@ -45,7 +45,7 @@
       }
 
       function progressFunction($resource, $download_size, $downloaded, $upload_size, $uploaded) {
-         $ed = $size = false;
+         $ed = $size = 0;
 
          if ($download_size > 0 && $downloaded > 0) {
             $ed = $downloaded;
@@ -56,12 +56,14 @@
          }
 
          if ($ed && $size) {
-            $status = round(($ed / $size) * 100, 3);
+            $status = Format::filesize($ed) . '/' . Format::filesize($size) . ' downloaded ['
+               . round(($ed / $size) * 100, 3) . ' %]';
+
             $time = time();
-            if ($status != $this->last_report_status && ($time != $this->last_report_time || $status == 100)) {
+            if ($status != $this->last_report_status && ($time != $this->last_report_time || $ed == $size)) {
                $this->last_report_time = $time;
                $this->last_report_status = $status;
-               _(str_pad($status, 6, ' ', STR_PAD_RIGHT) . '%');
+               _($status);
             }
          }
 

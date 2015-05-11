@@ -58,8 +58,18 @@
          return $this;
       }
 
+      /**
+       * @return Setup
+       */
       function checkApache() {
          return $this->checkBinaries(DIR_APACHE, 'Apache directory', '\Setup\Apache');
+      }
+
+      /**
+       * @return Setup
+       */
+      function checkMySQL() {
+         return $this->checkBinaries(DIR_MYSQL, 'MySQL directory', '\Setup\MySQL');
       }
 
       /**
