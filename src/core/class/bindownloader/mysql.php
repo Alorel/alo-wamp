@@ -5,15 +5,15 @@
    use \Format;
    use \IO;
 
-   class Apache extends \Setup\Apache {
+   class MySQL extends \Setup\MySQL {
 
       protected $installed_vers;
 
       /**
-       * @return Apache
+       * @return MySQL
        */
       protected function getInstalledVers() {
-         $dir = DIR_APACHE;
+         $dir = DIR_MYSQL;
 
          if (!file_exists($dir)) {
             die('Apache directory not found');
@@ -27,10 +27,10 @@
       }
 
       /**
-       * @return Apache
+       * @return MySQL
        */
       protected function installService() {
-         if (IO::readline('Would you like to use this version of Apache when you click "start AloWAMP"? [Y\N]') == 'y') {
+         if (IO::readline('Would you like to use this version of MySQL when you click "start AloWAMP"? [Y\N]') == 'y') {
             parent::installService();
          }
 
@@ -38,7 +38,7 @@
       }
 
       /**
-       * @return Apache
+       * @return MySQL
        */
       protected function filterLinks() {
          foreach ($this->installed_vers as $v) {
@@ -51,20 +51,7 @@
       }
 
       /**
-       * @return Apache
-       */
-      protected function updateSettings() {
-         $io = IO::readline('Would you like to set this version as the default Apache version for future installations? [Y/N]');
-
-         if ($io == 'y') {
-            parent::updateSettings();
-         }
-
-         return $this;
-      }
-
-      /**
-       * @return Apache
+       * @return MySQL
        */
       protected function promptDownload() {
          $this->getInstalledVers()->filterLinks();

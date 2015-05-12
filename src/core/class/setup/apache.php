@@ -29,7 +29,7 @@
       }
 
       /**
-       * Apache
+       * @return Apache
        */
       protected function installService() {
          if (Service::exists('aloapache')) {

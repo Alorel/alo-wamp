@@ -7,7 +7,7 @@
       }
 
       static function delete($name) {
-         return shell_exec('sc delete ' . $name);
+         return self::stop($name) . PHP_EOL . shell_exec('sc delete ' . $name);
       }
 
       static function stop($name) {
