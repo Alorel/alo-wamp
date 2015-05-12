@@ -48,7 +48,7 @@
                ';error_log = php_errors.log'
             ], [
                'date.timezone = ' . $timezone,
-               'extension_dir = "ext"',
+               'extension_dir = "' . $this->unzipped_destination . 'ext"',
                'error_log = ' . $err_log_dir . ''
             ], $contents);
 
