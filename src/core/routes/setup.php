@@ -13,7 +13,7 @@
       ->checkDir(DIR_LOGS . 'apache' . DIRECTORY_SEPARATOR, 'Apache log folder')
       ->checkDir(DIR_LOGS . 'mysql' . DIRECTORY_SEPARATOR, 'MySQL log folder')
       ->checkWWW()
-      ->checkMemcache()
       ->checkPHP()
       ->checkApache()
-      ->checkMySQL();
+      ->checkMySQL()
+      ->checkMemcache();

@@ -128,9 +128,18 @@
          if (file_exists(DIR_MEMCACHE)) {
             _('Memcache OK');
          } else {
-            _('Memcache not found. Contacting download server...');
-            sleep(1);
-            new \Setup\Memcache();
+            $rl = \IO::readline('Memcache not found. Would you like to download it? It\'s an optional module. [Y/N]');
+            switch ($rl) {
+               case 'y':
+                  _('Contacting download server...');
+                  new \Setup\Memcache();
+                  break;
+               case 'n':
+                  _('Memcache skipped');
+                  break;
+               default:
+                  return $this->checkMemcache();
+            }
          }
 
          return $this;
