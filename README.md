@@ -1,4 +1,4 @@
-This a currently in-development project for a easily updateable WAMP stack for Windows.
+This a currently in-development project for an easily updateable WAMP stack for Windows.
 
 # Binaries #
 
