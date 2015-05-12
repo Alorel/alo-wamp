@@ -20,7 +20,7 @@
       }
 
       protected function copy() {
-         _('Copying unzipped contents..');
+         _echo('Copying unzipped contents..');
 
          shell_exec('xcopy /s /e "' . rtrim($this->dest_unzip, DIRECTORY_SEPARATOR) . '" "' . rtrim(DIR_INDEX, DIRECTORY_SEPARATOR) . '"');
 
@@ -29,7 +29,7 @@
          }
 
          if (file_exists(DIR_MEMCACHE)) {
-            _('Copy successful!');
+            _echo('Copy successful!');
          } else {
             die('Failed to copy. Terminating setup.');
          }
@@ -39,7 +39,7 @@
        * @return Memcache
        */
       protected function unzip() {
-         _('Unzipping...');
+         _echo('Unzipping...');
          $zip = new \ZipArchive();
          $res = $zip->open($this->dest);
 
@@ -66,7 +66,7 @@
          $this->downloader = new \Downloader(self::MEMCACHE_DOWNLOAD_SOURCE, $this->dest);
 
          if ($this->downloader->download()) {
-            _('Download successful. Setting up Memcache...');
+            _echo('Download successful. Setting up Memcache...');
             sleep(1);
          } else {
             die('Download failed. Aborting setup.');

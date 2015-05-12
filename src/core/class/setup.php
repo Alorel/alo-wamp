@@ -18,10 +18,10 @@
          }
 
          if (file_exists($path)) {
-            _($msg . ' OK');
+            _echo($msg . ' OK');
          } else {
             mkdir($path, 777, true);
-            _($msg . ' created');
+            _echo($msg . ' created');
          }
 
          return $this;
@@ -42,7 +42,7 @@
        */
       protected function checkBinaries($dir, $message, $setup_class) {
          if (!file_exists($dir)) {
-            _('Creating ' . $message);
+            _echo('Creating ' . $message);
             mkdir($dir, 777, true);
          }
 
@@ -50,7 +50,7 @@
          Format::formatScandir($scan);
 
          if (!empty($scan)) {
-            _($message . ' OK');
+            _echo($message . ' OK');
          } else {
             new $setup_class();
          }
@@ -77,7 +77,7 @@
        */
       function checkDateTimezone() {
          if (Settings::$s->{'php_date_timezone'}) {
-            _('PHP\'s date.timezone OK');
+            _echo('PHP\'s date.timezone OK');
          } else {
             $timezone = trim(IO::readline('Please input the timezone for PHP, e.g. Europe/London]'));
 
@@ -91,7 +91,7 @@
 
                Settings::$s->php_date_timezone = implode('/', $split);
                Settings::$s->save();
-               _('Timezone set');
+               _echo('Timezone set');
             }
          }
 
@@ -100,9 +100,9 @@
 
       function checkWWW() {
          if (file_exists(DIR_WWW)) {
-            _('www dir OK');
+            _echo('www dir OK');
          } else {
-            _('www directory not found. Creating...');
+            _echo('www directory not found. Creating...');
 
             $dir = DIR_WWW . 'my-default-website' . DIRECTORY_SEPARATOR;
             mkdir($dir, 777, true);
@@ -111,7 +111,7 @@
          }
 
          if (!\Settings::$s->web_dir) {
-            _('Set default website directory in AloWAMP settings');
+            _echo('Set default website directory in AloWAMP settings');
             \Settings::$s->web_dir = 'my-default-website';
             \Settings::$s->save();
          }
@@ -126,16 +126,16 @@
        */
       function checkMemcache() {
          if (file_exists(DIR_MEMCACHE)) {
-            _('Memcache OK');
+            _echo('Memcache OK');
          } else {
             $rl = \IO::readline('Memcache not found. Would you like to download it? It\'s an optional module. [Y/N]');
             switch ($rl) {
                case 'y':
-                  _('Contacting download server...');
+                  _echo('Contacting download server...');
                   new \Setup\Memcache();
                   break;
                case 'n':
-                  _('Memcache skipped');
+                  _echo('Memcache skipped');
                   break;
                default:
                   return $this->checkMemcache();

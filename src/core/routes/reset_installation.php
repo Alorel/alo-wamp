@@ -18,7 +18,7 @@
          }
       }
 
-      _('Reset completed.');
+      _echo('Reset completed.');
    } else {
-      _('Reset aborted');
+      _echo('Reset aborted');
    }

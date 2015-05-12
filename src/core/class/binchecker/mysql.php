@@ -15,14 +15,14 @@
        * @return MySQL
        */
       protected function downloadPage() {
-         _('Loading MySQL download page');
+         _echo('Loading MySQL download page');
          $this->curl = new cURL(self::HOST . '/downloads/mysql');
          $this->curl->exec();
 
          if ($this->curl->errno() != CURLE_OK) {
             die('Failed to load MySQL download page');
          } else {
-            _('MySQL download page loaded');
+            _echo('MySQL download page loaded');
             $this->raw_html = $this->curl->get();
 
          }
@@ -70,7 +70,7 @@
          }
 
          if (empty($this->download_links)) {
-            _('No download links found.');
+            _echo('No download links found.');
          } else {
             $this->getAcutalLinks();
          }
@@ -109,9 +109,9 @@
          }
 
          if (empty($this->download_links)) {
-            _('No download links found.');
+            _echo('No download links found.');
          } else {
-            _(count($this->download_links) . ' MySQL versions found for download.');
+            _echo(count($this->download_links) . ' MySQL versions found for download.');
          }
 
          return $this;

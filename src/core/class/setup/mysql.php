@@ -61,7 +61,7 @@
        * @return MySQL
        */
       protected function unzip() {
-         _('It\'s a fairly large file so this next step might take a while..');
+         _echo('It\'s a fairly large file so this next step might take a while..');
 
          return parent::unzip();
       }
@@ -84,7 +84,7 @@
          if (!$dir) {
             die('Could not find the MySQL source directory in the unzipped files. Aborting.');
          } else {
-            _('Copying downloaded contents. It\'s usually over 1GB so this might take a while...');
+            _echo('Copying downloaded contents. It\'s usually over 1GB so this might take a while...');
             $source = $dir;
             $this->unzipped_destination = DIR_MYSQL . $this->version;
 
@@ -96,7 +96,7 @@
             $this->unzipped_destination .= DIRECTORY_SEPARATOR;
 
             if (file_exists($this->unzipped_destination . 'bin')) {
-               _('Copy successful!');
+               _echo('Copy successful!');
                $this->updateSettings();
             } else {
                die('Failed to copy. Terminating setup.');

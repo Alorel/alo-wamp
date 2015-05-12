@@ -77,6 +77,8 @@
 
    define('DIR_LOGS', DIR_INDEX . 'logs' . DIRECTORY_SEPARATOR);
 
+   define('SERVICEEXISTS', DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'serviceexists.exe');
+
    /**
     * Shortcut for isset($var) ? $var : null
     *
@@ -88,7 +90,7 @@
       return isset($var) ? $var : null;
    }
 
-   function _($str) {
+   function _echo($str) {
       echo $str . PHP_EOL;
    }
 

@@ -63,7 +63,7 @@
             if ($status != $this->last_report_status && ($time != $this->last_report_time || $ed == $size)) {
                $this->last_report_time = $time;
                $this->last_report_status = $status;
-               _($status);
+               _echo($status);
             }
          }
 
@@ -85,7 +85,7 @@
          if ($errno === CURLE_OK) {
             return true;
          } else {
-            _($this->curl->error());
+            _echo($this->curl->error());
 
             return false;
          }

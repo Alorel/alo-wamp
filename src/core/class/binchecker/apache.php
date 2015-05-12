@@ -15,14 +15,14 @@
        * @return Apache
        */
       protected function downloadPage() {
-         _('Loading Apache download page');
+         _echo('Loading Apache download page');
          $this->curl = new cURL(self::HOST . '/download/');
          $this->curl->exec();
 
          if ($this->curl->errno() != CURLE_OK) {
             die('Failed to load Apache download page');
          } else {
-            _('Apache download page loaded');
+            _echo('Apache download page loaded');
             $this->raw_html = $this->curl->get();
          }
 
@@ -57,9 +57,9 @@
          }
 
          if (empty($this->download_links)) {
-            _('No download links found.');
+            _echo('No download links found.');
          } else {
-            _(count($this->download_links) . ' Apache HTTPD versions found for download.');
+            _echo(count($this->download_links) . ' Apache HTTPD versions found for download.');
          }
 
          return $this;

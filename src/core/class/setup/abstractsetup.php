@@ -29,7 +29,7 @@
 
             foreach ($files as $f) {
                if (file_exists($f)) {
-                  _('Cleaning up ' . $f);
+                  _echo('Cleaning up ' . $f);
 
                   if (is_dir($f)) {
                      shell_exec('rd /s /q "' . $f . '"');
@@ -45,7 +45,7 @@
        * @return PHP
        */
       protected function unzip() {
-         _('Unzipping...');
+         _echo('Unzipping...');
          $zip = new \ZipArchive();
          $res = $zip->open($this->dest);
 

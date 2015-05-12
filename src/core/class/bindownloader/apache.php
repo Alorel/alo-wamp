@@ -29,6 +29,17 @@
       /**
        * @return Apache
        */
+      protected function installService() {
+         if (IO::readline('Would you like to use this version of Apache when you click "start AloWAMP"? [Y\N]') == 'y') {
+            parent::installService();
+         }
+
+         return $this;
+      }
+
+      /**
+       * @return Apache
+       */
       protected function filterLinks() {
          foreach ($this->installed_vers as $v) {
             if (isset($this->links[$v])) {
@@ -53,7 +64,7 @@
          $this->getInstalledVers()->filterLinks();
          if (!empty($this->links)) {
             $version_numbers = array_keys($this->links);
-            _('The following versions were found for download (versions already installed are not included): ' . PHP_EOL . "\t"
+            _echo('The following versions were found for download (versions already installed are not included): ' . PHP_EOL . "\t"
                . implode(PHP_EOL . "\t", $version_numbers));
 
             $io = trim(IO::readline('Which version would you like to download? Input N to abort'));
@@ -63,7 +74,7 @@
             } elseif ($io == 'n') {
                die('Aborting.');
             } elseif (!isset($this->links[$io])) {
-               _('The version you selected is not available for download.');
+               _echo('The version you selected is not available for download.');
                $this->promptDownload();
             } else {
                $this->version = $io;

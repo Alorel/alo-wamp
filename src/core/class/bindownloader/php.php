@@ -53,7 +53,7 @@
          $this->getInstalledVers()->filterLinks();
          if (!empty($this->links)) {
             $version_numbers = array_keys($this->links);
-            _('The following versions were found for download (versions already installed are not included): ' . PHP_EOL . "\t"
+            _echo('The following versions were found for download (versions already installed are not included): ' . PHP_EOL . "\t"
                . implode(PHP_EOL . "\t", $version_numbers));
 
             $io = trim(IO::readline('Which version would you like to download? Input N to abort'));
@@ -63,7 +63,7 @@
             } elseif ($io == 'n') {
                die('Aborting.');
             } elseif (!isset($this->links[$io])) {
-               _('The version you selected is not available for download.');
+               _echo('The version you selected is not available for download.');
                $this->promptDownload();
             } else {
                $this->version = $io;

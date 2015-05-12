@@ -4,6 +4,7 @@
 
    use \Format;
    use \Settings as SET;
+   use \Service;
 
    class Apache extends AbstractBinSetup {
 
@@ -23,7 +24,23 @@
             ->promptDownload()
             ->unzip()
             ->copy()
-            ->editHTTPD();
+            ->editHTTPD()
+            ->installService();
+      }
+
+      /**
+       * Apache
+       */
+      protected function installService() {
+         if (Service::exists('aloapache')) {
+            _echo('Removing previous AloWAMP apache service');
+            Service::delete('aloapache');
+         }
+
+         _echo('Installing apache service');
+         Service::installExe('aloapache', DIR_APACHE . $this->version . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'httpd.exe -k runservice', 'AloWAMP Apache ' . $this->version);
+
+         return $this;
       }
 
       /**
@@ -71,7 +88,7 @@
             if (!$contents) {
                die('Failed to open httpd.conf. Aborting setup.');
             } else {
-               _('Editing httpd.conf');
+               _echo('Editing httpd.conf');
 
                $php_dir = DIR_PHP . SET::$s->php_version;
 
@@ -106,7 +123,7 @@
                ], $contents);
 
                if (file_put_contents($httpd_conf, $contents) !== false) {
-                  _('httpd.conf edited');
+                  _echo('httpd.conf edited');
                } else {
                   die('Failed to edit httpd.conf. Aborting setup.');
                }
@@ -136,7 +153,7 @@
          if (!$dir) {
             die('Could not find the apache source directory in the unzipped files. Aborting.');
          } else {
-            _('Copying downloaded contents...');
+            _echo('Copying downloaded contents...');
             $source = $dir;
             $this->unzipped_destination = DIR_APACHE . $this->version;
 
@@ -148,7 +165,7 @@
             $this->unzipped_destination .= DIRECTORY_SEPARATOR;
 
             if (file_exists($this->unzipped_destination . 'bin')) {
-               _('Copy successful!');
+               _echo('Copy successful!');
                $this->updateSettings();
             } else {
                die('Failed to copy. Terminating setup.');

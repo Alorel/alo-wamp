@@ -32,7 +32,7 @@
 
          if (!$timezone) {
             $timezone = 'Europe/London';
-            _('Your timezone setting wasn\'t found. Setting it to Europe/London.');
+            _echo('Your timezone setting wasn\'t found. Setting it to Europe/London.');
             SET::$s->php_date_timezone = $timezone;
             SET::$s->save();
          }
@@ -53,17 +53,17 @@
             ], $contents);
 
             if (file_put_contents($ini, $contents) !== false) {
-               _('php.ini edited');
+               _echo('php.ini edited');
             } else {
                $msg = 'Failed to edit php.ini. You will have to set the following yourself:' . PHP_EOL
                   . "\t Find ';date.timezone =' and change it to 'date.timezone = ' . $timezone'" . PHP_EOL
                   . "\t Find '; extension_dir = \"ext\"' and change it to 'extension_dir = \"ext\"'" . PHP_EOL
                   . "\t Find ';error_log = php_errors.log' and change it to 'error_log = $err_log_dir'";
-               _($msg . PHP_EOL . 'Press ENTER to continue');
+               _echo($msg . PHP_EOL . 'Press ENTER to continue');
                \IO::readline();
             }
          } else {
-            _('Failed to open php.ini for editing. You will have to set the timezone yourself.');
+            _echo('Failed to open php.ini for editing. You will have to set the timezone yourself.');
          }
 
          return $this;
@@ -88,10 +88,10 @@
             if (!file_exists($this->unzipped_destination . 'php.ini')) {
                die('Failed to copy sample php.ini. Aborting.');
             } else {
-               _('Sample php.ini copied');
+               _echo('Sample php.ini copied');
             }
          } else {
-            _('php.ini found');
+            _echo('php.ini found');
          }
 
          return $this;
@@ -101,7 +101,7 @@
        * @return PHP
        */
       protected function copy() {
-         _('Copying unzipped contents..');
+         _echo('Copying unzipped contents..');
 
          $source = rtrim($this->dest_unzip, DIRECTORY_SEPARATOR);
          $this->unzipped_destination = DIR_PHP . $this->version;
@@ -115,7 +115,7 @@
          $this->unzipped_destination .= DIRECTORY_SEPARATOR;
 
          if (file_exists($this->unzipped_destination . 'php.ini-development') || file_exists($this->unzipped_destination . 'php.ini')) {
-            _('Copy successful!');
+            _echo('Copy successful!');
             $this->updateSettings();
          } else {
             die('Failed to copy. Terminating setup.');

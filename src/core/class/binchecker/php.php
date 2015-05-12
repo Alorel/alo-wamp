@@ -53,9 +53,9 @@
          }
 
          if (empty($this->download_links)) {
-            _('No download links found.');
+            _echo('No download links found.');
          } else {
-            _(count($this->download_links) . ' PHP versions found for download.');
+            _echo(count($this->download_links) . ' PHP versions found for download.');
          }
 
          return $this;
@@ -65,14 +65,14 @@
        * @return PHP
        */
       protected function downloadPage() {
-         _('Loading PHP download page');
+         _echo('Loading PHP download page');
          $this->curl = new cURL(self::HOST . '/download/');
          $this->curl->exec();
 
          if ($this->curl->errno() != CURLE_OK) {
             die('Failed to load PHP download page');
          } else {
-            _('PHP download page loaded');
+            _echo('PHP download page loaded');
             $this->raw_html = $this->curl->get();
          }
 
