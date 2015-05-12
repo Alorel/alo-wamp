@@ -2,6 +2,8 @@
 
    namespace Setup;
 
+   use \Service;
+
    class Memcache extends AbstractSetup {
 
       /**
@@ -16,9 +18,28 @@
          $this->dest_unzip = DIR_TMP . 'AloWAMP-bin-memcached' . DIRECTORY_SEPARATOR;
          $this->download()
             ->unzip()
-            ->copy();
+            ->copy()
+            ->installService();
       }
 
+      /**
+       * @return Memcache
+       */
+      protected function installService() {
+         if (Service::exists('alomemcache')) {
+            _echo('Removing previous AloWAMP Memcache service');
+            Service::delete('alomemcache');
+         }
+
+         _echo('Installing Memcache service');
+         Service::installExe('alomemcache', DIR_MEMCACHE . 'memcached.exe -d runservice', 'AloWAMP Memcache');
+
+         return $this;
+      }
+
+      /**
+       * @return Memcache
+       */
       protected function copy() {
          _echo('Copying unzipped contents..');
 
@@ -30,9 +51,12 @@
 
          if (file_exists(DIR_MEMCACHE)) {
             _echo('Copy successful!');
+            $this->cleanup();
          } else {
             die('Failed to copy. Terminating setup.');
          }
+
+         return $this;
       }
 
       /**

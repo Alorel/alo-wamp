@@ -114,6 +114,7 @@
 
             if (file_exists($this->unzipped_destination . 'bin')) {
                _echo('Copy successful!');
+               $this->cleanup();
                $this->updateSettings();
             } else {
                die('Failed to copy. Terminating setup.');

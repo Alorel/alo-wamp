@@ -23,6 +23,9 @@
 
       protected $cleanup = true;
 
+      /**
+       * @return AbstractSetup
+       */
       protected function cleanup(array $files = []) {
          if ($this->cleanup) {
             $files = array_merge([$this->dest, $this->dest_unzip], $files);
@@ -39,6 +42,8 @@
                }
             }
          }
+
+         return $this;
       }
 
       /**

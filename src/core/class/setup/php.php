@@ -117,6 +117,7 @@
          if (file_exists($this->unzipped_destination . 'php.ini-development') || file_exists($this->unzipped_destination . 'php.ini')) {
             _echo('Copy successful!');
             $this->updateSettings();
+            $this->cleanup();
          } else {
             die('Failed to copy. Terminating setup.');
          }
