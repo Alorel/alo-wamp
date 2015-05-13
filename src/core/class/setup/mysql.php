@@ -4,6 +4,7 @@
 
    use \Format;
    use \Service;
+   use \Settings as SET;
 
    class MySQL extends AbstractBinSetup {
 
@@ -129,6 +130,9 @@
        * @return MySQL
        */
       protected function updateSettings() {
+         SET::$s->mysql_version = $this->version;
+         Set::$s->save();
+
          return $this;
       }
    }
