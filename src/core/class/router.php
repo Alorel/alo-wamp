@@ -26,14 +26,11 @@
       }
 
       /**
-       * Prints a message to exit the window
+       * Echoes some empty lines before the "press any key to exit" bit
        *
        * @author Art <a.molcanovas@gmail.com>
        */
       function __destruct() {
-         if (!defined('PHPUNIT_RUNNING')) {
-            echo PHP_EOL . PHP_EOL . 'Press ENTER to exit' . PHP_EOL;
-            IO::readline();
-         }
+         echo PHP_EOL . PHP_EOL;
       }
    }

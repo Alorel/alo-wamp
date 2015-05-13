@@ -1,5 +1,4 @@
 .idea
-src/*.bat
 compile_exe.php
 icon.ico
 src/tmp
