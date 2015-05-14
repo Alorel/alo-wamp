@@ -3,7 +3,7 @@
    namespace Setup;
 
    use \Format;
-   use Service\Service;
+   use \Service;
    use \Settings as SET;
 
    class MySQL extends AbstractBinSetup {

@@ -3,7 +3,7 @@
    namespace Setup;
 
    use \Settings as SET;
-   use Service\Service;
+   use \Service;
 
    class Redis extends AbstractBinSetup {
 

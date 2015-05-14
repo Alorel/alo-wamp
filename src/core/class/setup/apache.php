@@ -4,7 +4,7 @@
 
    use \Format;
    use \Settings as SET;
-   use Service\Service;
+   use \Service;
 
    class Apache extends AbstractBinSetup {
 

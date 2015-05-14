@@ -5,7 +5,7 @@
    use \Format;
    use \Settings as SET;
    use \IO;
-   use Service\Service;
+   use \Service;
 
    abstract class AbstractVersionSwitch {
 
