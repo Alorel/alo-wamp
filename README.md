@@ -1,5 +1,4 @@
 ![alowamp](https://cloud.githubusercontent.com/assets/4998038/7642238/60e80d32-fa87-11e4-9324-55aa30403a66.png)
-
 ![apache](https://cloud.githubusercontent.com/assets/4998038/7642204/2cb598a4-fa87-11e4-9e91-4810590f444b.gif) ![mysql](https://cloud.githubusercontent.com/assets/4998038/7642205/2cb7fe8c-fa87-11e4-8548-cfcbdb4fc435.gif) ![php](https://cloud.githubusercontent.com/assets/4998038/7642206/2cba7158-fa87-11e4-9ecd-40696b1351d3.gif) ![redis](https://cloud.githubusercontent.com/assets/4998038/7642207/2cbe9b66-fa87-11e4-8058-d8da37907d57.gif) ![memcache](https://cloud.githubusercontent.com/assets/4998038/7642179/032c9942-fa87-11e4-98ee-4ab2fc1d5652.gif)
 
 # What is this? #
@@ -13,12 +12,18 @@ AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Me
 
 # Table of Contents #
 
-1. [Setup](#setup)
-2. [Files](#files)
-3. [Controlling Services](#controlling-services)
-4. [FAQ](#faq)
-5. [Supporting the Project](#supporting-the-project)
-6. [Other Alo products](#other-alo-products)
+1. [Why should I use this WAMP Stack](#why-should-i-use-this-wamp-stack)
+2. [Setup](#setup)
+3. [Files](#files)
+4. [Controlling Services](#controlling-services)
+5. [FAQ](#faq)
+6. [Supporting the Project](#supporting-the-project)
+7. [Other Alo products](#other-alo-products)
+
+# Why Should I Use This Wamp Stack #
+
+* **Range of products**. Most WAMPs will only offer PHP, Apache and MySQL while AloWAMP also gives you Memcache and Redis.
+* **Most up-to date binaries, always**. It's easy to update to a new version of a binary from within AloWAMP (be sure to actually switch to it afterwards); most WAMPs only offer pre-installed versions and take ages to update them.
 
 # Setup #
 Simply run setup.bat and it will handle everything for you.  **Any batch file should be run with admin privileges**.
