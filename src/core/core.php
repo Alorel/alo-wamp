@@ -81,6 +81,8 @@
 
    define('SERVICEEXISTS', DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'serviceexists.exe');
 
+   define('HOMEPAGE', 'https://github.com/Alorel/AloWAMP');
+
    /**
     * Shortcut for isset($var) ? $var : null
     *
