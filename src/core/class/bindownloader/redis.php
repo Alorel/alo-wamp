@@ -5,18 +5,18 @@
    use \Format;
    use \IO;
 
-   class MySQL extends \Setup\MySQL {
+   class Redis extends \Setup\Redis {
 
       protected $installed_vers;
 
       /**
-       * @return MySQL
+       * @return Redis
        */
       protected function getInstalledVers() {
-         $dir = DIR_MYSQL;
+         $dir = DIR_REDIS;
 
          if (!file_exists($dir)) {
-            die('Apache directory not found');
+            die('Redis directory not found');
          } else {
             $scan = scandir($dir);
             Format::formatScandir($scan);
@@ -27,14 +27,14 @@
       }
 
       /**
-       * @return MySQL
+       * @return Redis
        */
       protected function installService() {
          return $this;
       }
 
       /**
-       * @return MySQL
+       * @return Redis
        */
       protected function filterLinks() {
          foreach ($this->installed_vers as $v) {
@@ -47,14 +47,14 @@
       }
 
       /**
-       * @return MySQL
+       * @return Redis
        */
       protected function updateSettings() {
          return $this;
       }
 
       /**
-       * @return MySQL
+       * @return Redis
        */
       protected function promptDownload() {
          $this->getInstalledVers()->filterLinks();

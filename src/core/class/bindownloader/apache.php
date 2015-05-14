@@ -30,10 +30,6 @@
        * @return Apache
        */
       protected function installService() {
-         if (IO::readline('Would you like to use this version of Apache when you click "start AloWAMP"? [Y\N]') == 'y') {
-            parent::installService();
-         }
-
          return $this;
       }
 
@@ -54,12 +50,6 @@
        * @return Apache
        */
       protected function updateSettings() {
-         $io = IO::readline('Would you like to set this version as the default Apache version for future installations? [Y/N]');
-
-         if ($io == 'y') {
-            parent::updateSettings();
-         }
-
          return $this;
       }
 

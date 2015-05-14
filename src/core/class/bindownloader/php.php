@@ -40,12 +40,6 @@
       }
 
       protected function updateSettings() {
-         $io = IO::readline('Would you like to set this version as the default PHP interpreter for future installations? [Y/N]');
-
-         if ($io == 'y') {
-            parent::updateSettings();
-         }
-
          return $this;
       }
 
