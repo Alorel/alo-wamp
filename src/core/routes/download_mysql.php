@@ -1,0 +1,3 @@
+<?php
+
+   new \BinDownloader\MySQL();

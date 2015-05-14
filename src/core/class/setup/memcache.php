@@ -2,7 +2,7 @@
 
    namespace Setup;
 
-   use \Service;
+   use Service\Service;
 
    class Memcache extends AbstractSetup {
 

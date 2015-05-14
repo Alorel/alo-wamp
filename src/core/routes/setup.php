@@ -12,8 +12,10 @@
       ->checkDir(DIR_LOGS . 'php' . DIRECTORY_SEPARATOR, 'PHP log folder')
       ->checkDir(DIR_LOGS . 'apache' . DIRECTORY_SEPARATOR, 'Apache log folder')
       ->checkDir(DIR_LOGS . 'mysql' . DIRECTORY_SEPARATOR, 'MySQL log folder')
+      ->checkDir(DIR_LOGS . 'redis' . DIRECTORY_SEPARATOR, 'Redis log folder')
       ->checkWWW()
       ->checkPHP()
       ->checkApache()
       ->checkMySQL()
+      ->checkRedis()
       ->checkMemcache();

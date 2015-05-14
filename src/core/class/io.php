@@ -50,7 +50,7 @@
        */
       static function readline($prompt = null) {
          if ($prompt) {
-            echo $prompt . ': ';
+            echo '[' . timestamp_precise() . '] ' . $prompt . ': ';
          }
 
          $r = strtolower(stream_get_line(STDIN, PHP_INT_MAX, PHP_EOL));

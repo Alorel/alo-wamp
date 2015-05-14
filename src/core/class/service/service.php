@@ -1,5 +1,7 @@
 <?php
 
+   namespace Service;
+
    abstract class Service {
 
       static function exists($name) {

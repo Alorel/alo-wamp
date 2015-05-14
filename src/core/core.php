@@ -45,6 +45,8 @@
     */
    define('DIR_MEMCACHE', DIR_BIN . 'memcache' . DIRECTORY_SEPARATOR);
 
+   define('DIR_REDIS', DIR_BIN . 'redis' . DIRECTORY_SEPARATOR);
+
    /**
     * Apache directory
     *
@@ -90,8 +92,14 @@
       return isset($var) ? $var : null;
    }
 
+   function timestamp_precise() {
+      $mt = explode('.', microtime(true));
+
+      return date('H:i:s', $mt[0]) . ':' . str_pad(round(((int)$mt[1]) / 10), 3, ' ', STR_PAD_RIGHT);
+   }
+
    function _echo($str) {
-      echo $str . PHP_EOL;
+      echo '[' . timestamp_precise() . '] ' . $str . PHP_EOL;
    }
 
    require_once DIR_CORE . 'class' . DIRECTORY_SEPARATOR . 'handler.php';

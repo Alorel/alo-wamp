@@ -144,4 +144,11 @@
 
          return $this;
       }
+
+      /**
+       * @return Setup
+       */
+      function checkRedis() {
+         return $this->checkBinaries(DIR_REDIS, 'Redis directory', '\Setup\Redis');
+      }
    }

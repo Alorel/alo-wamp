@@ -40,6 +40,7 @@
                _echo('The version you selected is not available for download.');
                $this->promptDownload();
             } else {
+               _echo('Contacting download server...');
                $this->version = $io;
                $this->download();
 
