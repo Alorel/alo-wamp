@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Alowamp by Alorel</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Alorel/AloWAMP">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Alorel/AloWAMP/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Alorel/AloWAMP/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Alowamp</h1>
+          <p>A self-updating WAMP stack with the latest binaries, always</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Alorel">Alorel</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p><img src="https://cloud.githubusercontent.com/assets/4998038/7642238/60e80d32-fa87-11e4-9324-55aa30403a66.png" alt="alowamp"></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/4998038/7642204/2cb598a4-fa87-11e4-9e91-4810590f444b.gif" alt="apache"> <img src="https://cloud.githubusercontent.com/assets/4998038/7642205/2cb7fe8c-fa87-11e4-8548-cfcbdb4fc435.gif" alt="mysql"> <img src="https://cloud.githubusercontent.com/assets/4998038/7642206/2cba7158-fa87-11e4-9ecd-40696b1351d3.gif" alt="php"> <img src="https://cloud.githubusercontent.com/assets/4998038/7642207/2cbe9b66-fa87-11e4-8058-d8da37907d57.gif" alt="redis"> <img src="https://cloud.githubusercontent.com/assets/4998038/7642179/032c9942-fa87-11e4-98ee-4ab2fc1d5652.gif" alt="memcache"></p>
+
+<h1>
+<a id="what-is-this" class="anchor" href="#what-is-this" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is this?</h1>
+
+<p>AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Memcache port as well as:</p>
+
+<ul>
+<li>An automatically updateable <strong>PHP</strong> installer</li>
+<li>Automatically updateable <strong>MySQL</strong> installer</li>
+<li>Autmiatically updateable <strong>Apache HTTPD</strong> installer</li>
+<li>Automatically updateable <strong>Redis</strong> installer</li>
+<li>An old, but functioning Windows port for <strong>Memcache</strong>
+</li>
+</ul>
+
+<h1>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h1>
+
+<ol>
+<li><a href="#why-should-i-use-this-wamp-stack">Why should I use this WAMP Stack</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#files">Files</a></li>
+<li><a href="#controlling-services">Controlling Services</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#supporting-the-project">Supporting the Project</a></li>
+<li><a href="#other-alo-products">Other Alo products</a></li>
+</ol>
+
+<h1>
+<a id="why-should-i-use-this-wamp-stack" class="anchor" href="#why-should-i-use-this-wamp-stack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why Should I Use This Wamp Stack</h1>
+
+<ul>
+<li>
+<strong>Range of products</strong>. Most WAMPs will only offer PHP, Apache and MySQL while AloWAMP also gives you Memcache and Redis.</li>
+<li>
+<strong>Most up-to date binaries, always</strong>. It's easy to update to a new version of a binary from within AloWAMP (be sure to actually switch to it afterwards); most WAMPs only offer pre-installed versions and take ages to update them.</li>
+</ul>
+
+<h1>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h1>
+
+<p>Simply run setup.bat and it will handle everything for you.  <strong>Any batch file should be run with admin privileges</strong>.</p>
+
+<p>^<a href="#table-of-contents">TOC</a></p>
+
+<h1>
+<a id="files" class="anchor" href="#files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Files</h1>
+
+<p>You should only need to care about three directories:</p>
+
+<ul>
+<li>
+<strong>logs</strong>, once installed, contain all the, you've guessed it, logs.</li>
+<li>
+<strong>wamp</strong> contains the batch files that control services, versions etc</li>
+<li>
+<strong>www</strong> is where you'll be placing your project files</li>
+</ul>
+
+<p>^<a href="#table-of-contents">TOC</a></p>
+
+<h1>
+<a id="controlling-services" class="anchor" href="#controlling-services" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controlling Services</h1>
+
+<p>Simply use the appropriate start/restart/stop/uninstall batch files.</p>
+
+<p>^<a href="#table-of-contents">TOC</a></p>
+
+<h1>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h1>
+
+<p>Q: How do you update your binaries?
+A: I simply get the page HTML via cURL, parse it and produce links. The installer then downloads them and performs the required setup. The downside of this, of course, is that changes in the pages' HTML <em>can</em> make downloads impossible, in which case simply report an issue and it'll get fixed.</p>
+
+<p>Q: Where do you get your binaries?
+A: Memcache is hosted on this repository while everything else is fetched from the official websites.</p>
+
+<p>Q: Which versions do you use?
+A: To keep everything nice and available, all versions are 32-bit and PHP versions are thread-safe. The only exception is Redis, which is only available for 64-bit processors.</p>
+
+<p>^<a href="#table-of-contents">TOC</a></p>
+
+<h1>
+<a id="supporting-the-project" class="anchor" href="#supporting-the-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supporting the Project</h1>
+
+<p>Any support is greatly appreciated - whether you're able to <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=UEPH3KQJKEQDE">send a Paypal donation</a>, <a href="http://www.clixsense.com/?r=4639931&amp;c=alo-wamp&amp;s=102">become a ClixSense referral</a> or simply <a href="mailto:a.molcanovas@gmail.com">drop an email</a> I'll be very greatful. :)</p>
+
+<p>^<a href="#table-of-contents">TOC</a></p>
+
+<h1>
+<a id="other-alo-products" class="anchor" href="#other-alo-products" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other Alo Products</h1>
+
+<ul>
+<li>
+<a href="https://github.com/Alorel/alo-framework">AloFramework</a>, a simple yet powerful PHP framework.</li>
+</ul>
+
+<p>^<a href="#table-of-contents">TOC</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
