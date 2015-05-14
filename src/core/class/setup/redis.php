@@ -3,7 +3,7 @@
    namespace Setup;
 
    use \Settings as SET;
-   use Service\Redis AS Service;
+   use Service\Service;
 
    class Redis extends AbstractBinSetup {
 
@@ -37,7 +37,7 @@
          }
 
          _echo('Installing Redis service');
-         Service::installExe('aloredis', DIR_REDIS . $this->version . DIRECTORY_SEPARATOR . 'redis-server.exe', 'aloredis');
+         Service::installExe('aloredis', DIR_REDIS . $this->version . DIRECTORY_SEPARATOR . 'redis-server.exe --service-run --service-name aloredis', 'AloWAMP Redis ' . $this->version);
 
          return $this;
       }

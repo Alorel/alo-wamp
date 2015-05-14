@@ -53,7 +53,7 @@
             echo '[' . timestamp_precise() . '] ' . $prompt . ': ';
          }
 
-         $r = strtolower(stream_get_line(STDIN, PHP_INT_MAX, PHP_EOL));
+         $r = trim(strtolower(stream_get_line(STDIN, PHP_INT_MAX, PHP_EOL)));
          echo PHP_EOL;
 
          return $r;
