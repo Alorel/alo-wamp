@@ -8,7 +8,7 @@
    _echo('Local version: ' . $local_version);
    _echo('Remote version: ' . $remote_version);
 
-   if (version_compare($local_version, $remote_version, '>')) {
+   if (version_compare($local_version, $remote_version, '<')) {
       $loop = true;
       do {
          $io = trim(IO::readline('Would you like to download the update? [Y\N]'));

@@ -6,7 +6,7 @@
 
 [![Packagist](https://img.shields.io/packagist/v/alorel/alo-wamp.png?style=plastic&label=Packagist%20release)](https://packagist.org/packages/alorel/alo-wamp) [![Packagist](https://img.shields.io/packagist/vpre/alorel/alo-wamp.png?style=plastic&label=Packagist%20pre-release)](https://packagist.org/packages/alorel/alo-wamp)
 
-[![NuGET](http://img.shields.io/nuget/dt/aloWAMP.png?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist](https://img.shields.io/packagist/dt/alorel/alo-wamp.png?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) ![GitHub](https://img.shields.io/github/downloads/alorel/aloWAMP/latest/total.png?label=GitHub%20downloads&style=plastic)
+[![NuGET](http://img.shields.io/nuget/dt/aloWAMP.png?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist](https://img.shields.io/packagist/dt/alorel/alo-wamp.png?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) 
 
 
 # What is this? #
