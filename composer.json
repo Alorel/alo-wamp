@@ -1,0 +1,31 @@
+{
+	"name":              "alorel/aloWAMP",
+	"description":       "A self-updating WAMP stack with the latest binaries, always.",
+	"minimum-stability": "stable",
+	"type":              "project",
+	"license":           "GPL-3.0+",
+	"homepage":          "https://github.com/Alorel/AloWAMP",
+	"keywords":          [
+		"WAMP",
+		"Windows",
+		"Apache",
+		"MySQL",
+		"PHP",
+		"Memcache",
+		"Redis",
+		"latest",
+		"version",
+		"updating"
+	],
+	"authors":           [
+		{
+			"name":  "Art",
+			"email": "a.molcanovas@gmail.com",
+			"role":  "Developer"
+		}
+	],
+	"support":           {
+		"wiki":   "https://github.com/Alorel/AloWAMP/wiki",
+		"issues": "https://github.com/Alorel/AloWAMP/issues"
+	}
+}

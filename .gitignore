@@ -1,7 +1,11 @@
 .idea
+*.nupkg
+composer.lock
 compile_exe.php
 icon.ico
 src/tmp
 src/bin
 src/www
+src/logs
+vendor
 src/core/settings.ini
