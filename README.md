@@ -2,6 +2,8 @@
 
 ![apache](https://cloud.githubusercontent.com/assets/4998038/7642204/2cb598a4-fa87-11e4-9e91-4810590f444b.gif) ![mysql](https://cloud.githubusercontent.com/assets/4998038/7642205/2cb7fe8c-fa87-11e4-8548-cfcbdb4fc435.gif) ![php](https://cloud.githubusercontent.com/assets/4998038/7642206/2cba7158-fa87-11e4-9ecd-40696b1351d3.gif) ![redis](https://cloud.githubusercontent.com/assets/4998038/7642207/2cbe9b66-fa87-11e4-8058-d8da37907d57.gif) ![memcache](https://cloud.githubusercontent.com/assets/4998038/7642179/032c9942-fa87-11e4-98ee-4ab2fc1d5652.gif)
 
+[![Latest Stable Version](https://poser.pugx.org/alorel/alo-wamp/v/stable)](https://packagist.org/packages/alorel/alo-wamp) [![Total Downloads](https://poser.pugx.org/alorel/alo-wamp/downloads)](https://packagist.org/packages/alorel/alo-wamp) [![Latest Unstable Version](https://poser.pugx.org/alorel/alo-wamp/v/unstable)](https://packagist.org/packages/alorel/alo-wamp) [![License](https://poser.pugx.org/alorel/alo-wamp/license)](https://packagist.org/packages/alorel/alo-wamp)
+
 # What is this? #
 AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Memcache port as well as:
 
