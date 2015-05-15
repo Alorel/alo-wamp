@@ -8,26 +8,11 @@
    abstract class Format {
 
       /**
-       * Turns an array into an ini format
+       * Removes "." and ".." entries from scandir()
        *
        * @author Art <a.molcanovas@gmail.com>
-       * @param array $a The array
-       * @return string Generated contents
+       * @param array $scandir Reference to scandir() results
        */
-      static function array_to_ini(array $a) {
-         $r = '';
-
-         foreach ($a as $k => $v) {
-            $r .= "[$k]" . PHP_EOL;
-
-            foreach ($v as $key => $value) {
-               $r .= "$key=$value" . PHP_EOL;
-            }
-         }
-
-         return $r;
-      }
-
       static function formatScandir(&$scandir) {
          $scandir = array_filter($scandir, function ($r) {
             return $r != '.' && $r != '..';
@@ -43,7 +28,10 @@
       }
 
       /**
+       * Returns a human-friendly filesize
+       *
        * @param int $bytes Filesize in bytes
+       * @author Art <a.molcanovas@gmail.com>
        * @return string
        */
       static function filesize($bytes) {

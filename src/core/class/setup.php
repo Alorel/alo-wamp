@@ -10,6 +10,9 @@
       /**
        * Checks if a directory exists
        *
+       * @author Art <a.molcanovas@gmail.com>
+       * @param string $path Path to check
+       * @param string $msg  Check identifier (for echo)
        * @return Setup
        */
       function checkDir($path, $msg = null) {
@@ -28,6 +31,9 @@
       }
 
       /**
+       * Checks if PHP is set up
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Setup
        */
       function checkPHP() {
@@ -35,6 +41,9 @@
       }
 
       /**
+       * Generic method to check if binaries are installed properly
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @param string $dir         dir to scan
        * @param string $message     scan identifier
        * @param string $setup_class Setup class name
@@ -59,6 +68,9 @@
       }
 
       /**
+       * Checks if Apache HTTPD is installed properly
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Setup
        */
       function checkApache() {
@@ -66,6 +78,9 @@
       }
 
       /**
+       * Checks if MySQL is installed properly
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Setup
        */
       function checkMySQL() {
@@ -73,6 +88,9 @@
       }
 
       /**
+       * Checks if date.timezone is set up for PHP
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Setup
        */
       function checkDateTimezone() {
@@ -98,6 +116,12 @@
          return $this;
       }
 
+      /**
+       * Checks if the WWW dir is set up
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return Setup
+       */
       function checkWWW() {
          if (file_exists(DIR_WWW)) {
             _echo('www dir OK');
@@ -122,6 +146,7 @@
       /**
        * Checks and creates the memcache directory
        *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Setup
        */
       function checkMemcache() {
@@ -146,6 +171,9 @@
       }
 
       /**
+       * Checks if Redis is set up properly
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Setup
        */
       function checkRedis() {

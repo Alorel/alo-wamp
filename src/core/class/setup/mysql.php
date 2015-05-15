@@ -6,13 +6,25 @@
    use \Service;
    use \Settings as SET;
 
+   /**
+    * Sets up MySQL
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class MySQL extends AbstractBinSetup {
 
       /**
+       * BinChecker instance
+       *
        * @var \BinChecker\MySQL
        */
       protected $binchecker;
 
+      /**
+       * Constructor
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __construct() {
          $this->dest = DIR_TMP . 'mysql.zip';
          $this->dest_unzip = DIR_TMP . 'mysql' . DIRECTORY_SEPARATOR;
@@ -29,6 +41,9 @@
       }
 
       /**
+       * Installs the service
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function installService() {
@@ -44,6 +59,9 @@
       }
 
       /**
+       * Edits my.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function editMyIni() {
@@ -69,13 +87,9 @@
       }
 
       /**
-       * @return MySQL
-       */
-      protected function promptDownload() {
-         return parent::promptDownload();
-      }
-
-      /**
+       * Unzips downloaded contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function unzip() {
@@ -85,6 +99,9 @@
       }
 
       /**
+       * Copies unzipped contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function copy() {
@@ -127,6 +144,9 @@
       }
 
       /**
+       * Updates settings.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function updateSettings() {

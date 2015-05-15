@@ -7,10 +7,26 @@
    use \DOMXPath;
    use \DOMNode;
 
+   /**
+    * Checks for PHP binary downloads
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class PHP extends AbstractBinChecker {
 
+      /**
+       * Download host
+       *
+       * @var string
+       */
       const HOST = 'http://windows.php.net';
 
+      /**
+       * Parses the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return PHP
+       */
       protected function parsePage() {
          $d = new DOMDocument();
          @$d->loadhtml($this->raw_html);
@@ -62,6 +78,9 @@
       }
 
       /**
+       * Downloads the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return PHP
        */
       protected function downloadPage() {

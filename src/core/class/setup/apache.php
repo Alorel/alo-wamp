@@ -6,13 +6,25 @@
    use \Settings as SET;
    use \Service;
 
+   /**
+    * Sets up Apache HTTPD
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class Apache extends AbstractBinSetup {
 
       /**
+       * BinChecker instance
+       *
        * @var \BinChecker\Apache
        */
       protected $binchecker;
 
+      /**
+       * Constructor
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __construct() {
          $this->dest = DIR_TMP . 'httpd.zip';
          $this->dest_unzip = DIR_TMP . 'httpd' . DIRECTORY_SEPARATOR;
@@ -29,6 +41,9 @@
       }
 
       /**
+       * Installs the service
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Apache
        */
       protected function installService() {
@@ -44,19 +59,10 @@
       }
 
       /**
-       * @return Apache
+       * Checks if the www dir is set up
+       *
+       * @author Art <a.molcanovas@gmail.com>
        */
-      protected function promptDownload() {
-         return parent::promptDownload();
-      }
-
-      /**
-       * @return Apache
-       */
-      protected function unzip() {
-         return parent::unzip();
-      }
-
       protected function checkWebDir() {
          if (!SET::$s->web_dir) {
             $new_dir = \IO::readline('Your default website name was not found - please enter a name (defaults to my-default-website if left empty)');
@@ -75,6 +81,9 @@
       }
 
       /**
+       * Edits config
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Apache
        */
       protected function editHTTPD() {
@@ -136,6 +145,9 @@
       }
 
       /**
+       * Copies unzipped contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Apache
        */
       protected function copy() {
@@ -178,6 +190,9 @@
       }
 
       /**
+       * Updates settings.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Apache
        */
       protected function updateSettings() {

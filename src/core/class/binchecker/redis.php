@@ -7,10 +7,26 @@
    use \DOMXPath;
    use \DOMNode;
 
+   /**
+    * Checks for Redis binary downloads
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class Redis extends AbstractBinChecker {
 
+      /**
+       * Download host
+       *
+       * @var string
+       */
       const HOST = 'https://github.com/MSOpenTech/redis';
 
+      /**
+       * Parses the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return Redis
+       */
       protected function parsePage() {
          $d = new DOMDocument();
          @$d->loadhtml($this->raw_html);
@@ -41,7 +57,10 @@
       }
 
       /**
-       * @return PHP
+       * Downloads the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return Redis
        */
       protected function downloadPage() {
          _echo('Loading Redis download page');

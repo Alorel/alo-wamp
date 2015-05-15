@@ -7,11 +7,24 @@
    use \DOMXPath;
    use \DOMNode;
 
+   /**
+    * Checks for Apache binary downloads
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class Apache extends AbstractBinChecker {
 
+      /**
+       * The download host
+       *
+       * @var string
+       */
       const HOST = 'http://www.apachelounge.com/';
 
       /**
+       * Downloads the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Apache
        */
       protected function downloadPage() {
@@ -30,6 +43,9 @@
       }
 
       /**
+       * Parses the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Apache
        */
       protected function parsePage() {

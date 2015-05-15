@@ -8,7 +8,7 @@
    abstract class IO {
 
       /**
-       * Arguments passed on to PHP
+       * Arguments passed on to PHP excl the first (file name)
        *
        * @var array
        */

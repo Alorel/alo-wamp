@@ -18,20 +18,6 @@
    define('DIR_INDEX', implode(DIRECTORY_SEPARATOR, $prev_dir) . DIRECTORY_SEPARATOR);
 
    /**
-    * PHP engine directory
-    *
-    * @var string
-    */
-   define('DIR_PHP_ENGINE', DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'php_engine' . DIRECTORY_SEPARATOR);
-
-   /**
-    * Path to PHP executable
-    *
-    * @var string
-    */
-   define('PHP_EXECUTABLE', DIR_PHP_ENGINE . 'php.exe');
-
-   /**
     * Binaries directory
     *
     * @var string
@@ -45,6 +31,11 @@
     */
    define('DIR_MEMCACHE', DIR_BIN . 'memcache' . DIRECTORY_SEPARATOR);
 
+   /**
+    * Redis directory
+    *
+    * @var string
+    */
    define('DIR_REDIS', DIR_BIN . 'redis' . DIRECTORY_SEPARATOR);
 
    /**
@@ -75,12 +66,32 @@
     */
    define('DIR_TMP', DIR_INDEX . 'tmp' . DIRECTORY_SEPARATOR);
 
+   /**
+    * WWW directory
+    *
+    * @var string
+    */
    define('DIR_WWW', DIR_INDEX . 'www' . DIRECTORY_SEPARATOR);
 
+   /**
+    * Log directory
+    *
+    * @var string
+    */
    define('DIR_LOGS', DIR_INDEX . 'logs' . DIRECTORY_SEPARATOR);
 
-   define('SERVICEEXISTS', DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'serviceexists.exe');
+   /**
+    * Path to the service checker executable
+    *
+    * @var string
+    */
+   define('SERVICEEXISTS', DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'serviceexists.bat');
 
+   /**
+    * Homepage URL
+    *
+    * @var string
+    */
    define('HOMEPAGE', 'https://github.com/Alorel/AloWAMP');
 
    /**
@@ -94,12 +105,24 @@
       return isset($var) ? $var : null;
    }
 
+   /**
+    * Returns a precise timestamp
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    * @return string
+    */
    function timestamp_precise() {
       $mt = explode('.', microtime(true));
 
       return date('H:i:s', $mt[0]) . ':' . str_pad(round(((int)$mt[1]) / 10), 3, ' ', STR_PAD_RIGHT);
    }
 
+   /**
+    * Output wapper
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    * @param string $str String to echo
+    */
    function _echo($str) {
       echo '[' . timestamp_precise() . '] ' . $str . PHP_EOL;
    }

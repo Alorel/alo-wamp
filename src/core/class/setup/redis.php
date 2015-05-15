@@ -5,13 +5,25 @@
    use \Settings as SET;
    use \Service;
 
+   /**
+    * Sets up Redis
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class Redis extends AbstractBinSetup {
 
       /**
+       * BinChecker instance
+       *
        * @var \BinChecker\Redis
        */
       protected $binchecker;
 
+      /**
+       * Constructor
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __construct() {
          $this->dest = DIR_TMP . 'redis.zip';
          $this->dest_unzip = DIR_TMP . 'redis' . DIRECTORY_SEPARATOR;
@@ -28,6 +40,9 @@
       }
 
       /**
+       * Installs the service
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Redis
        */
       protected function installService() {
@@ -43,6 +58,9 @@
       }
 
       /**
+       * Edits the config file
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Redis
        */
       protected function editConf() {
@@ -75,6 +93,9 @@
       }
 
       /**
+       * Copies unzipped contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Redis
        */
       protected function copy() {
@@ -103,6 +124,9 @@
       }
 
       /**
+       * Updates settings.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Redis
        */
       protected function updateSettings() {

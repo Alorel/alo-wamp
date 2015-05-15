@@ -4,24 +4,38 @@
 
    use \Downloader;
 
+   /**
+    * Abstract setup for binaries
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    abstract class AbstractBinSetup extends AbstractSetup {
 
       /**
+       * Download links
+       *
        * @var array
        */
       protected $links;
 
       /**
+       * Version selected
+       *
        * @var string
        */
       protected $version;
 
       /**
+       * Destination to unzip to
+       *
        * @var string
        */
       protected $unzipped_destination;
 
       /**
+       * Prompts to download a version
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return AbstractBinSetup
        */
       protected function promptDownload() {
@@ -54,6 +68,9 @@
       }
 
       /**
+       * Downloads a version
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return AbstractBinSetup
        */
       protected function download() {

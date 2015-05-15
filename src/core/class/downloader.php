@@ -22,12 +22,16 @@
       protected $dest;
 
       /**
+       * Timestamp when we last reported the status
+       *
        * @var int
        */
       protected $last_report_time;
 
       /**
-       * @var float
+       * The last reported status
+       *
+       * @var string
        */
       protected $last_report_status;
 
@@ -38,12 +42,29 @@
        */
       protected $fp;
 
+      /**
+       * Instantiates the class
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @param string $source      Download source
+       * @param string $destination Download destination
+       */
       function __construct($source, $destination) {
          $this->dest = $destination;
          $this->curl = new cURL($source);
          $this->curl->setProgressFunction([$this, 'progressFunction']);
       }
 
+      /**
+       * The progress function
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @param resource $resource      Coulsn't find documentation on this one, most likely the curl resource
+       * @param int      $download_size How much we are downloading
+       * @param int      $downloaded    How much we have downloaded
+       * @param int      $upload_size   How much we are uploading
+       * @param int      $uploaded      How much we have uploaded
+       */
       function progressFunction($resource, $download_size, $downloaded, $upload_size, $uploaded) {
          $ed = $size = 0;
 
@@ -67,9 +88,16 @@
             }
          }
 
+         //Unnecessary, but stops the IDE from thinking the variable is unused
          unset($resource);
       }
 
+      /**
+       * Starts the download
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return bool Whther the download was successful (on the cURL side)
+       */
       function download() {
          if (file_exists($this->dest)) {
             unlink($this->dest);

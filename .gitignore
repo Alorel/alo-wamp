@@ -9,3 +9,5 @@ src/www
 src/logs
 vendor
 src/core/settings.ini
+1
+*.neon

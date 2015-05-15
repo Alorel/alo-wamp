@@ -2,14 +2,23 @@
 
    namespace Setup;
 
+   /**
+    * Abstract setup class
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    abstract class AbstractSetup {
 
       /**
+       * Where to download
+       *
        * @var string
        */
       protected $dest;
 
       /**
+       * Where to unzip
+       *
        * @var string
        */
       protected $dest_unzip;
@@ -21,9 +30,18 @@
        */
       protected $downloader;
 
+      /**
+       * Whether a cleanup should be performed
+       *
+       * @var bool
+       */
       protected $cleanup = true;
 
       /**
+       * Cleans up in tmp
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @param array $files Files to clear
        * @return AbstractSetup
        */
       protected function cleanup(array $files = []) {
@@ -47,7 +65,10 @@
       }
 
       /**
-       * @return PHP
+       * Unzips downloaded contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return AbstractSetup
        */
       protected function unzip() {
          _echo('Unzipping...');
@@ -68,6 +89,11 @@
          return $this;
       }
 
+      /**
+       * Performs cleanup if needed
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __destruct() {
          $this->cleanup();
       }

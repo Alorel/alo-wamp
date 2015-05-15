@@ -4,6 +4,11 @@
 
    use \Service;
 
+   /**
+    * Sets up Memcache
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class Memcache extends AbstractSetup {
 
       /**
@@ -13,6 +18,11 @@
        */
       const MEMCACHE_DOWNLOAD_SOURCE = 'https://github.com/Alorel/AloWAMP/archive/bin/memcached.zip';
 
+      /**
+       * Constructor
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __construct() {
          $this->dest = DIR_TMP . 'memcache.zip';
          $this->dest_unzip = DIR_TMP . 'AloWAMP-bin-memcached' . DIRECTORY_SEPARATOR;
@@ -23,6 +33,9 @@
       }
 
       /**
+       * Installs the service
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Memcache
        */
       protected function installService() {
@@ -38,6 +51,9 @@
       }
 
       /**
+       * Copies unzipped contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Memcache
        */
       protected function copy() {
@@ -60,6 +76,9 @@
       }
 
       /**
+       * Unzips contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return Memcache
        */
       protected function unzip() {
@@ -85,13 +104,13 @@
        * Downloads memcache
        *
        * @author Art <a.molcanovas@gmail.com>
+       * @return Memcache
        */
       protected function download() {
          $this->downloader = new \Downloader(self::MEMCACHE_DOWNLOAD_SOURCE, $this->dest);
 
          if ($this->downloader->download()) {
             _echo('Download successful. Setting up Memcache...');
-            sleep(1);
          } else {
             die('Download failed. Aborting setup.');
          }

@@ -4,13 +4,25 @@
 
    use \Settings as SET;
 
+   /**
+    * Sets up PHP
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class PHP extends AbstractBinSetup {
 
       /**
+       * BinChecker instance
+       *
        * @var \BinChecker\PHP
        */
       protected $binchecker;
 
+      /**
+       * Constructor
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __construct() {
          $this->dest = DIR_TMP . 'php.zip';
          $this->dest_unzip = DIR_TMP . 'php' . DIRECTORY_SEPARATOR;
@@ -26,6 +38,12 @@
             ->editIni();
       }
 
+      /**
+       * Edits php.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return PHP
+       */
       protected function editIni() {
          $timezone = SET::$s->php_date_timezone;
          $ini = $this->unzipped_destination . 'php.ini';
@@ -70,6 +88,9 @@
       }
 
       /**
+       * Renames php.ini-(development|production) to php.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return PHP
        */
       protected function renameIni() {
@@ -98,6 +119,9 @@
       }
 
       /**
+       * Copies unzipped contents
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return PHP
        */
       protected function copy() {
@@ -126,6 +150,9 @@
       }
 
       /**
+       * Updates settings.ini
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return PHP
        */
       protected function updateSettings() {

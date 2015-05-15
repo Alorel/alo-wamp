@@ -7,11 +7,24 @@
    use \DOMXPath;
    use \DOMNode;
 
+   /**
+    * Checks for MySQL binary downloads
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    class MySQL extends AbstractBinChecker {
 
+      /**
+       * Download host
+       *
+       * @var string
+       */
       const HOST = 'http://dev.mysql.com';
 
       /**
+       * Downloads the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function downloadPage() {
@@ -31,6 +44,9 @@
       }
 
       /**
+       * Parses the page
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function parsePage() {
@@ -79,6 +95,9 @@
       }
 
       /**
+       * Generates the actual download links (MySQL has a two-page thing for this)
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return MySQL
        */
       protected function getAcutalLinks() {

@@ -7,32 +7,69 @@
    use \IO;
    use \Service;
 
+   /**
+    * Abstract version switcher
+    *
+    * @author Art <a.molcanovas@gmail.com>
+    */
    abstract class AbstractVersionSwitch {
 
+      /**
+       * Directories that this switch will affect, e.g. switching PHP versions affects Apache's httpd.conf
+       *
+       * @var array
+       */
       protected $dependent_dirs = [];
 
       /**
+       * Ini setting
+       *
        * @var string
        */
       protected $ini;
 
       /**
+       * Directory where the binary resides in
+       *
        * @var string
        */
       protected $dir;
 
+      /**
+       * Version you're switching from
+       *
+       * @var string
+       */
       protected $old_version;
 
+      /**
+       * Version you're switching to
+       *
+       * @var string
+       */
       protected $new_version;
 
+      /**
+       * Service name
+       *
+       * @var string
+       */
       protected $service;
 
+      /**
+       * Constructor
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
       function __construct() {
          $this->old_version = SET::$s->{$this->ini};
          $this->trySwitch();
       }
 
       /**
+       * Updates dependencies
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return AbstractVersionSwitch
        */
       function updateDependencies() {
@@ -74,6 +111,12 @@
          return $this;
       }
 
+      /**
+       * Restarts any relevant services
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return AbstractVersionSwitch
+       */
       protected function restartService() {
          if ($this->service) {
             Service::restart($this->service);
@@ -82,6 +125,12 @@
          return $this;
       }
 
+      /**
+       * Updates apache settings
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @param string $version Which version to update
+       */
       protected function updateApache($version) {
          _echo('Updating Apache ' . $version);
          $file = DIR_APACHE . $version . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'httpd.conf';
@@ -101,6 +150,9 @@
       }
 
       /**
+       * Attempts to switch versions
+       *
+       * @author Art <a.molcanovas@gmail.com>
        * @return AbstractVersionSwitch
        */
       function trySwitch() {
