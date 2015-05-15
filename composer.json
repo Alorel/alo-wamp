@@ -1,5 +1,5 @@
 {
-	"name":              "alorel/aloWAMP",
+	"name":              "alorel/alo-wamp",
 	"description":       "A self-updating WAMP stack with the latest binaries, always.",
 	"minimum-stability": "stable",
 	"type":              "project",
