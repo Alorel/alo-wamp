@@ -1,8 +1,13 @@
 ![alowamp](https://cloud.githubusercontent.com/assets/4998038/7642238/60e80d32-fa87-11e4-9324-55aa30403a66.png)
 
-![apache](https://cloud.githubusercontent.com/assets/4998038/7642204/2cb598a4-fa87-11e4-9e91-4810590f444b.gif) ![mysql](https://cloud.githubusercontent.com/assets/4998038/7642205/2cb7fe8c-fa87-11e4-8548-cfcbdb4fc435.gif) ![php](https://cloud.githubusercontent.com/assets/4998038/7642206/2cba7158-fa87-11e4-9ecd-40696b1351d3.gif) ![redis](https://cloud.githubusercontent.com/assets/4998038/7642207/2cbe9b66-fa87-11e4-8058-d8da37907d57.gif) ![memcache](https://cloud.githubusercontent.com/assets/4998038/7642179/032c9942-fa87-11e4-98ee-4ab2fc1d5652.gif)
+ ![apache](https://img.shields.io/badge/Apache-UPDATEABLE-brightgreen.png?style=plastic) ![mysql](https://img.shields.io/badge/MySQL-UPDATEABLE-brightgreen.png?style=plastic) ![php](https://img.shields.io/badge/PHP-UPDATEABLE-brightgreen.png?style=plastic) ![redis](https://img.shields.io/badge/Redis-UPDATEABLE-brightgreen.png?style=plastic) ![memcache](https://img.shields.io/badge/Memcache-Preset-yellow.png?style=plastic)
 
-[![Latest Stable Version](https://poser.pugx.org/alorel/alo-wamp/v/stable)](https://packagist.org/packages/alorel/alo-wamp) [![Total Downloads](https://poser.pugx.org/alorel/alo-wamp/downloads)](https://packagist.org/packages/alorel/alo-wamp) [![Latest Unstable Version](https://poser.pugx.org/alorel/alo-wamp/v/unstable)](https://packagist.org/packages/alorel/alo-wamp) [![License](https://poser.pugx.org/alorel/alo-wamp/license)](https://packagist.org/packages/alorel/alo-wamp)
+[![NuGet](http://img.shields.io/nuget/v/aloWAMP.png?label=NuGet%20release&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![NuGET](http://img.shields.io/nuget/vpre/aloWAMP.png?label=NuGet%20pre-release&color=orange&style=plastic)](https://www.nuget.org/packages/AloWAMP/) 
+[![Packagist](https://img.shields.io/packagist/v/alorel/alo-wamp.png?style=plastic&label=Packagist%20release)](https://packagist.org/packages/alorel/alo-wamp) [![Packagist](https://img.shields.io/packagist/vpre/alorel/alo-wamp.png?style=plastic&label=Packagist%20pre-release)](https://packagist.org/packages/alorel/alo-wamp)
+
+[![NuGET](http://img.shields.io/nuget/dt/aloWAMP.png?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist](https://img.shields.io/packagist/dt/alorel/alo-wamp.png?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) ![GitHub](https://img.shields.io/github/downloads/alorel/aloWAMP/latest/total.png?label=GitHub%20downloads&style=plastic)
+
+[![Licence](https://img.shields.io/github/license/alorel/aloWAMP.png?style=plastic)](LICENCE)
 
 # What is this? #
 AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Memcache port as well as:
