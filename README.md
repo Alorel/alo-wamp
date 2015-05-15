@@ -7,7 +7,7 @@
 
 [![NuGET](http://img.shields.io/nuget/dt/aloWAMP.png?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist](https://img.shields.io/packagist/dt/alorel/alo-wamp.png?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) ![GitHub](https://img.shields.io/github/downloads/alorel/aloWAMP/latest/total.png?label=GitHub%20downloads&style=plastic)
 
-[![Licence](https://img.shields.io/github/license/alorel/aloWAMP.png?style=plastic)](LICENCE)
+[![Licence](https://img.shields.io/github/license/alorel/aloWAMP.png?style=plastic&label=Licence)](LICENCE)
 
 # What is this? #
 AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Memcache port as well as:
