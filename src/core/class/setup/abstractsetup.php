@@ -53,7 +53,6 @@
                   _echo('Cleaning up ' . $f);
 
                   if (is_dir($f)) {
-                     _echo('rd /s /q "' . $f . '"');
                      shell_exec('rd /s /q "' . $f . '"');
                   } else {
                      unlink($f);
