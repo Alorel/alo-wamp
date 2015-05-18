@@ -85,7 +85,7 @@
     *
     * @var string
     */
-   define('SERVICEEXISTS', DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'serviceexists.bat');
+   define('SERVICEEXISTS', '"' . DIR_CORE . 'bin' . DIRECTORY_SEPARATOR . 'serviceexists.bat"');
 
    /**
     * Homepage URL
@@ -106,25 +106,13 @@
    }
 
    /**
-    * Returns a precise timestamp
-    *
-    * @author Art <a.molcanovas@gmail.com>
-    * @return string
-    */
-   function timestamp_precise() {
-      $mt = explode('.', microtime(true));
-
-      return date('H:i:s', $mt[0]) . ':' . str_pad(round(((int)get($mt[1])) / 10), 3, '0', STR_PAD_RIGHT);
-   }
-
-   /**
     * Output wapper
     *
     * @author Art <a.molcanovas@gmail.com>
     * @param string $str String to echo
     */
    function _echo($str) {
-      echo '[' . timestamp_precise() . '] ' . $str . PHP_EOL;
+      echo '[' . date('Y-m-d H:i:s') . '] ' . $str . PHP_EOL;
    }
 
    require_once DIR_CORE . 'class' . DIRECTORY_SEPARATOR . 'handler.php';

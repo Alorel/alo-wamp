@@ -1,3 +1,7 @@
+# 1.0.4 #
+
+* Fixed an issue where service installation would fail if there is a space in the directory path
+
 # 1.0.3 #
 
 * Reduced the repo size by removing unused DLLs from core php_engine.

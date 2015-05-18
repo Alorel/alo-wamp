@@ -26,8 +26,6 @@
        * @return string shell_exec() output
        */
       static function delete($name) {
-         _echo('sc delete ' . $name);
-
          return self::stop($name) . PHP_EOL . shell_exec('sc delete ' . $name);
       }
 
@@ -79,8 +77,6 @@
          if ($display_name) {
             $cmd .= ' DisplayName= "' . $display_name . '"';
          }
-
-         _echo($cmd);
 
          return shell_exec($cmd);
       }

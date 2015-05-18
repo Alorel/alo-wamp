@@ -50,7 +50,7 @@
        */
       static function readline($prompt = null) {
          if ($prompt) {
-            echo '[' . timestamp_precise() . '] ' . $prompt . ': ';
+            echo '[' . date('Y-m-d H:i:s') . '] ' . $prompt . ': ';
          }
 
          $r = trim(strtolower(stream_get_line(STDIN, PHP_INT_MAX, PHP_EOL)));
