@@ -24,6 +24,7 @@ AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Me
 * [Setup](#setup)
 * [Files](#files)
 * [Controlling Services](#controlling-services)
+* [Changelog](#changelog)
 * [FAQ](#faq)
 	* [The installer fails to install services](#the-installer-fails-to-install-services)
 	* [How do you update your binaries?](#how-do-you-update-your-binaries)
