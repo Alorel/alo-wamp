@@ -1,6 +1,8 @@
 # 1.0.2 #
 
 * Made service installation during setup echo the command output so the user can know for sure if the service installation was successful.
+* More FAQs
+* Readme table of contents is now more usable
 
 # 1.0.1 #
 

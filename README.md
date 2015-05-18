@@ -26,6 +26,9 @@ AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Me
 * [Controlling Services](#controlling-services)
 * [FAQ](#faq)
 	* [The installer fails to install services](#the-installer-fails-to-install-services)
+	* [How do you update your binaries?](#how-do-you-update-your-binaries)
+	* [Where do you get your binaries?](#where-do-you-get-your-binaries)
+	* [Which versions do you use?](#which-versions-do-you-use)
 * [Supporting the Project](#supporting-the-project)
 * [Other Alo products](#other-alo-products)
 
@@ -53,6 +56,11 @@ Simply use the appropriate start/restart/stop/uninstall batch files.
 
 ^[TOC](#table-of-contents)
 
+# Changelog #
+See [changelog.md](changelog.md)
+
+^[TOC](#table-of-contents)
+
 # FAQ #
 ## The installer fails to install services ##
 This can only be caused by running the batch files without admin permissions. Run the **reset installation.bat** file and try running it via right click: 
@@ -69,22 +77,20 @@ cd "Program Files\AloWAMP"
 setup.bat
 ```
 
-----------
+^[TOC](#table-of-contents)
 
-Q: How do you update your binaries?
+## How do you update your binaries? ##
+I simply get the page HTML via cURL, parse it and produce links. The installer then downloads them and performs the required setup. The downside of this, of course, is that changes in the pages' HTML *can* make downloads impossible, in which case simply report an issue and it'll get fixed.
 
-A: I simply get the page HTML via cURL, parse it and produce links. The installer then downloads them and performs the required setup. The downside of this, of course, is that changes in the pages' HTML *can* make downloads impossible, in which case simply report an issue and it'll get fixed.
+^[TOC](#table-of-contents)
 
-----------
+## Where do you get your binaries? ##
+Memcache is hosted on this repository while everything else is fetched from the official websites.
 
-Q: Where do you get your binaries?
+^[TOC](#table-of-contents)
 
-A: Memcache is hosted on this repository while everything else is fetched from the official websites.
-
-----------
-
-Q: Which versions do you use?
-A: To keep everything nice and available, all versions are 32-bit and PHP versions are thread-safe. The only exception is Redis, which is only available for 64-bit processors.
+## Which versions do you use? ##
+To keep everything nice and available, all versions are 32-bit and PHP versions are thread-safe. The only exception is Redis, which is only available for 64-bit processors.
 
 ^[TOC](#table-of-contents)
 
