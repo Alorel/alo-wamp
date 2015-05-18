@@ -1,12 +1,12 @@
 ![Logo](https://cloud.githubusercontent.com/assets/4998038/7652717/3ced6726-fb07-11e4-9d2e-7201085c2831.png)
 
-[![Licence](https://img.shields.io/github/license/alorel/aloWAMP.png?style=plastic&label=Licence)](LICENCE)
+[![Licence](https://img.shields.io/github/license/alorel/aloWAMP.svg?style=plastic&label=Licence)](LICENCE)
 
-[![NuGet](http://img.shields.io/nuget/v/aloWAMP.png?label=NuGet%20release&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![NuGET](http://img.shields.io/nuget/vpre/aloWAMP.png?label=NuGet%20pre-release&color=orange&style=plastic)](https://www.nuget.org/packages/AloWAMP/) 
+[![NuGet release](http://img.shields.io/nuget/v/aloWAMP.svg?label=NuGet%20release&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![NuGET pre-release](http://img.shields.io/nuget/vpre/aloWAMP.svg?label=NuGet%20pre-release&color=orange&style=plastic)](https://www.nuget.org/packages/AloWAMP/) 
 
-[![Packagist](https://img.shields.io/packagist/v/alorel/alo-wamp.png?style=plastic&label=Packagist%20release)](https://packagist.org/packages/alorel/alo-wamp) [![Packagist](https://img.shields.io/packagist/vpre/alorel/alo-wamp.png?style=plastic&label=Packagist%20pre-release)](https://packagist.org/packages/alorel/alo-wamp)
+[![Packagist release](https://img.shields.io/packagist/v/alorel/alo-wamp.svg?style=plastic&label=Packagist%20release)](https://packagist.org/packages/alorel/alo-wamp) [![Packagist pre-release](https://img.shields.io/packagist/vpre/alorel/alo-wamp.svg?style=plastic&label=Packagist%20pre-release)](https://packagist.org/packages/alorel/alo-wamp)
 
-[![NuGET](http://img.shields.io/nuget/dt/aloWAMP.png?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist](https://img.shields.io/packagist/dt/alorel/alo-wamp.png?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) 
+[![NuGET downloads](http://img.shields.io/nuget/dt/aloWAMP.svg?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist downloads](https://img.shields.io/packagist/dt/alorel/alo-wamp.svg?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) 
 
 
 # What is this? #
@@ -54,10 +54,16 @@ Simply use the appropriate start/restart/stop/uninstall batch files.
 
 # FAQ #
 Q: How do you update your binaries?
+
 A: I simply get the page HTML via cURL, parse it and produce links. The installer then downloads them and performs the required setup. The downside of this, of course, is that changes in the pages' HTML *can* make downloads impossible, in which case simply report an issue and it'll get fixed.
 
+----------
+
 Q: Where do you get your binaries?
+
 A: Memcache is hosted on this repository while everything else is fetched from the official websites.
+
+----------
 
 Q: Which versions do you use?
 A: To keep everything nice and available, all versions are 32-bit and PHP versions are thread-safe. The only exception is Redis, which is only available for 64-bit processors.
