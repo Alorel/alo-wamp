@@ -8,7 +8,7 @@
 	<title>File core/class/setup/memcache.php | AloWAMP source documentation</title>
 
 	<script type="text/javascript" src="resources/combined.js?1647505039"></script>
-	<script type="text/javascript" src="elementlist.js?2460986708"></script>
+	<script type="text/javascript" src="elementlist.js?4135045334"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/bootstrap.min.css?260161822" />
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?2015443609" />
 
@@ -142,11 +142,11 @@
 </span><span id="41" class="l"><a class="l" href="#41"> 41 </a>      <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_installService" href="#_installService">installService</a>() {
 </span><span id="42" class="l"><a class="l" href="#42"> 42 </a>         <span class="php-keyword1">if</span> (Service::exists(<span class="php-quote">'alomemcache'</span>)) {
 </span><span id="43" class="l"><a class="l" href="#43"> 43 </a>            _echo(<span class="php-quote">'Removing previous AloWAMP Memcache service'</span>);
-</span><span id="44" class="l"><a class="l" href="#44"> 44 </a>            Service::<span class="php-keyword2">delete</span>(<span class="php-quote">'alomemcache'</span>);
+</span><span id="44" class="l"><a class="l" href="#44"> 44 </a>            _echo(Service::<span class="php-keyword2">delete</span>(<span class="php-quote">'alomemcache'</span>));
 </span><span id="45" class="l"><a class="l" href="#45"> 45 </a>         }
 </span><span id="46" class="l"><a class="l" href="#46"> 46 </a>
 </span><span id="47" class="l"><a class="l" href="#47"> 47 </a>         _echo(<span class="php-quote">'Installing Memcache service'</span>);
-</span><span id="48" class="l"><a class="l" href="#48"> 48 </a>         Service::installExe(<span class="php-quote">'alomemcache'</span>, DIR_MEMCACHE . <span class="php-quote">'memcached.exe -d runservice'</span>, <span class="php-quote">'AloWAMP Memcache'</span>);
+</span><span id="48" class="l"><a class="l" href="#48"> 48 </a>         _echo(Service::installExe(<span class="php-quote">'alomemcache'</span>, DIR_MEMCACHE . <span class="php-quote">'memcached.exe -d runservice'</span>, <span class="php-quote">'AloWAMP Memcache'</span>));
 </span><span id="49" class="l"><a class="l" href="#49"> 49 </a>
 </span><span id="50" class="l"><a class="l" href="#50"> 50 </a>         <span class="php-keyword1">return</span> <span class="php-var">$this</span>;
 </span><span id="51" class="l"><a class="l" href="#51"> 51 </a>      }
