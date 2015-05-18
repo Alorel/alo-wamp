@@ -49,11 +49,11 @@
       protected function installService() {
          if (Service::exists('alomysql')) {
             _echo('Removing previous AloWAMP MySQL service');
-            Service::delete('alomysql');
+            _echo(Service::delete('alomysql'));
          }
 
          _echo('Installing MySQL service');
-         Service::installExe('alomysql', DIR_MYSQL . $this->version . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'mysqld.exe alomysql', 'AloWAMP MySQL ' . $this->version);
+         _echo(Service::installExe('alomysql', DIR_MYSQL . $this->version . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'mysqld.exe alomysql', 'AloWAMP MySQL ' . $this->version));
 
          return $this;
       }
