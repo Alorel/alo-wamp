@@ -48,11 +48,11 @@
       protected function installService() {
          if (Service::exists('aloredis')) {
             _echo('Removing previous AloWAMP Redis service');
-            Service::delete('aloredis');
+            _echo(Service::delete('aloredis'));
          }
 
          _echo('Installing Redis service');
-         Service::installExe('aloredis', DIR_REDIS . $this->version . DIRECTORY_SEPARATOR . 'redis-server.exe --service-run --service-name aloredis', 'AloWAMP Redis ' . $this->version);
+         _echo(Service::installExe('aloredis', DIR_REDIS . $this->version . DIRECTORY_SEPARATOR . 'redis-server.exe --service-run --service-name aloredis', 'AloWAMP Redis ' . $this->version));
 
          return $this;
       }
