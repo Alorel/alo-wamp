@@ -14,19 +14,20 @@ AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Me
 
 * An automatically updateable **PHP** installer
 * Automatically updateable **MySQL** installer
-* Autmiatically updateable **Apache HTTPD** installer
+* Automatically updateable **Apache HTTPD** installer
 * Automatically updateable **Redis** installer
 * An old, but functioning Windows port for **Memcache**
 
 # Table of Contents #
 
-1. [Why should I use this WAMP Stack](#why-should-i-use-this-wamp-stack)
-2. [Setup](#setup)
-3. [Files](#files)
-4. [Controlling Services](#controlling-services)
-5. [FAQ](#faq)
-6. [Supporting the Project](#supporting-the-project)
-7. [Other Alo products](#other-alo-products)
+* [Why should I use this WAMP Stack](#why-should-i-use-this-wamp-stack)
+* [Setup](#setup)
+* [Files](#files)
+* [Controlling Services](#controlling-services)
+* [FAQ](#faq)
+	* [The installer fails to install services](#the-installer-fails-to-install-services)
+* [Supporting the Project](#supporting-the-project)
+* [Other Alo products](#other-alo-products)
 
 # Why Should I Use This Wamp Stack #
 
@@ -53,6 +54,23 @@ Simply use the appropriate start/restart/stop/uninstall batch files.
 ^[TOC](#table-of-contents)
 
 # FAQ #
+## The installer fails to install services ##
+This can only be caused by running the batch files without admin permissions. Run the **reset installation.bat** file and try running it via right click: 
+
+![Run as admin - right click](https://cloud.githubusercontent.com/assets/4998038/7687571/0d8bfd44-fd96-11e4-93c8-04b27b023836.png)
+
+or by running **cmd** as admin, navigating to where you have AloWAMP installed and running setup manually, for example (the example assumes you have AloWAMP source unzipped to **C:\Program files\AloWAMP**):
+
+![cmd as admin](https://cloud.githubusercontent.com/assets/4998038/7687570/0d890f76-fd96-11e4-9d51-de89831bf4d4.png)
+
+```
+C:\
+cd "Program Files\AloWAMP"
+setup.bat
+```
+
+----------
+
 Q: How do you update your binaries?
 
 A: I simply get the page HTML via cURL, parse it and produce links. The installer then downloads them and performs the required setup. The downside of this, of course, is that changes in the pages' HTML *can* make downloads impossible, in which case simply report an issue and it'll get fixed.
