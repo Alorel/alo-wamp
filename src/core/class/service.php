@@ -59,7 +59,8 @@
        * @return string shell_exec() output
        */
       static function restart($name) {
-         return self::stop($name) . PHP_EOL . self::start($name);
+         return shell_exec("sc stop $name && sc start $name");
+         //return self::stop($name) . PHP_EOL . self::start($name);
       }
 
       /**
