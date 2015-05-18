@@ -49,11 +49,11 @@
       protected function installService() {
          if (Service::exists('aloapache')) {
             _echo('Removing previous AloWAMP apache service');
-            Service::delete('aloapache');
+            _echo(Service::delete('aloapache'));
          }
 
          _echo('Installing apache service');
-         Service::installExe('aloapache', DIR_APACHE . $this->version . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'httpd.exe -k runservice', 'AloWAMP Apache ' . $this->version);
+         _echo(Service::installExe('aloapache', DIR_APACHE . $this->version . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'httpd.exe -k runservice', 'AloWAMP Apache ' . $this->version));
 
          return $this;
       }

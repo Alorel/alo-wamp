@@ -41,11 +41,11 @@
       protected function installService() {
          if (Service::exists('alomemcache')) {
             _echo('Removing previous AloWAMP Memcache service');
-            Service::delete('alomemcache');
+            _echo(Service::delete('alomemcache'));
          }
 
          _echo('Installing Memcache service');
-         Service::installExe('alomemcache', DIR_MEMCACHE . 'memcached.exe -d runservice', 'AloWAMP Memcache');
+         _echo(Service::installExe('alomemcache', DIR_MEMCACHE . 'memcached.exe -d runservice', 'AloWAMP Memcache'));
 
          return $this;
       }
