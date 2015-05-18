@@ -1,6 +1,6 @@
 # 1.0.3 #
 
-* Reduced the repo size by removing unused DLLs from core php_engine
+* Reduced the repo size by removing unused DLLs from core php_engine.
 
 # 1.0.2 #
 
