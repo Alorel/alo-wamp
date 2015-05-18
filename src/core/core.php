@@ -114,7 +114,7 @@
    function timestamp_precise() {
       $mt = explode('.', microtime(true));
 
-      return date('H:i:s', $mt[0]) . ':' . str_pad(round(((int)$mt[1]) / 10), 3, ' ', STR_PAD_RIGHT);
+      return date('H:i:s', $mt[0]) . ':' . str_pad(round(((int)get($mt[1])) / 10), 3, '0', STR_PAD_RIGHT);
    }
 
    /**
