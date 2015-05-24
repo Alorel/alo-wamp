@@ -10,17 +10,18 @@
 
 
 # What is this? #
-AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Memcache port as well as:
+AloWAMP is, well, a functioning web-server for Windows machines. It has a Windows Memcache port as well as:
 
-* An automatically updateable **PHP** installer
-* Automatically updateable **MySQL** installer
-* Automatically updateable **Apache HTTPD** installer
-* Automatically updateable **Redis** installer
+* An automatically updatable **PHP** installer
+* Automatically updatable **MySQL** installer
+* Automatically updatable **Apache HTTPD** installer
+* Automatically updatable **Redis** installer
 * An old, but functioning Windows port for **Memcache**
 
 # Table of Contents #
 
 * [Why should I use this WAMP Stack](#why-should-i-use-this-wamp-stack)
+* [Requirements](#requirements)
 * [Setup](#setup)
 * [Files](#files)
 * [Controlling Services](#controlling-services)
@@ -34,9 +35,12 @@ AloWAMP is, well, a functioning web-server for Windows machines. It a Windows Me
 * [Other Alo products](#other-alo-products)
 
 # Why Should I Use This Wamp Stack #
-
 * **Range of products**. Most WAMPs will only offer PHP, Apache and MySQL while AloWAMP also gives you Memcache and Redis.
 * **Most up-to date binaries, always**. It's easy to update to a new version of a binary from within AloWAMP (be sure to actually switch to it afterwards); most WAMPs only offer pre-installed versions and take ages to update them.
+
+# Requirements #
+* [Visual C++ Redistributable for Visual Studio 2012](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
+	* This is a required installation to use PHP. Only the 32-bit version is required for AloWAMP, but, if you have a 64-bit machine, I would recommend installing the 64-bit version too as you might need it in future.
 
 # Setup #
 Simply run setup.bat and it will handle everything for you.  **Any batch file should be run with admin privileges**.
@@ -101,7 +105,6 @@ Any support is greatly appreciated - whether you're able to [send a Paypal donat
 ^[TOC](#table-of-contents)
 
 # Other Alo Products #
-
-* [AloFramework](https://github.com/Alorel/alo-framework), a simple yet powerful PHP framework.
+You can find other open source Alo products at [alorel.weebly.com](http://alorel.weebly.com/).
 
 ^[TOC](#table-of-contents)
