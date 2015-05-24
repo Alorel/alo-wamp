@@ -100,7 +100,7 @@ To keep everything nice and available, all versions are 32-bit and PHP versions 
 ^[TOC](#table-of-contents)
 
 # Supporting the Project #
-Any support is greatly appreciated - whether you're able to [send a Paypal donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UEPH3KQJKEQDE), [become a ClixSense referral](http://www.clixsense.com/?r=4639931&c=alo-wamp&s=102) or simply [drop an email](mailto:a.molcanovas@gmail.com) I'll be very greatful. :)
+Any support is greatly appreciated - whether you're able to [send a Paypal donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UEPH3KQJKEQDE), [become a ClixSense referral](http://www.clixsense.com/?r=4639931&c=alo-wamp&s=102) or simply [drop an email](mailto:a.molcanovas@gmail.com) I'll be very grateful. :)
 
 ^[TOC](#table-of-contents)
 
