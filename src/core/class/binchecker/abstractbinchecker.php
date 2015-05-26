@@ -2,7 +2,7 @@
 
    namespace BinChecker;
 
-   use \cURL;
+   use cURL;
 
    /**
     * Abstract binary checker
@@ -52,14 +52,12 @@
       }
 
       /**
-       * Returns the download links
+       * Parses the page
        *
        * @author Art <a.molcanovas@gmail.com>
-       * @return array
+       * @return AbstractBinChecker
        */
-      function getLinks() {
-         return $this->download_links;
-      }
+      protected abstract function parsePage();
 
       /**
        * Downloads the page
@@ -70,10 +68,12 @@
       protected abstract function downloadPage();
 
       /**
-       * Parses the page
+       * Returns the download links
        *
        * @author Art <a.molcanovas@gmail.com>
-       * @return AbstractBinChecker
+       * @return array
        */
-      protected abstract function parsePage();
+      function getLinks() {
+         return $this->download_links;
+      }
    }

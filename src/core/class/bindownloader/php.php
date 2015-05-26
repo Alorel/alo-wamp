@@ -2,8 +2,7 @@
 
    namespace BinDownloader;
 
-   use \Format;
-   use \IO;
+   use Format;
 
    require_once 'bindownloadertrait.php';
 
@@ -17,7 +16,7 @@
       protected function getInstalledVers() {
          $dir = DIR_PHP;
 
-         if (!file_exists($dir)) {
+         if(!file_exists($dir)) {
             die('PHP directory not found');
          } else {
             $scan = scandir($dir);

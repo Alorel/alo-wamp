@@ -18,13 +18,14 @@
        * Clears previous output
        *
        * @author Art <a.molcanovas@gmail.com>
+       *
        * @param int $lines Amount of empty lines to output
        */
       static function echo_lines($lines = 100) {
-         $l = "";
+         $l     = "";
          $lines = (int)$lines;
 
-         for ($i = 0; $i < $lines; $i++) {
+         for($i = 0; $i < $lines; $i++) {
             $l .= PHP_EOL;
          }
 
@@ -35,6 +36,7 @@
        * Opens a file
        *
        * @author Art <a.molcanovas@gmail.com>
+       *
        * @param string $path File path
        */
       static function open_file($path) {
@@ -45,11 +47,13 @@
        * Reads a line of user input
        *
        * @author Art <a.molcanovas@gmail.com>
+       *
        * @param string $prompt Prompt message
+       *
        * @return string
        */
       static function readline($prompt = null) {
-         if ($prompt) {
+         if($prompt) {
             echo '[' . date('Y-m-d H:i:s') . '] ' . $prompt . ': ';
          }
 

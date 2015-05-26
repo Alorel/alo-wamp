@@ -2,7 +2,7 @@
 
    namespace BinDownloader;
 
-   use \Format;
+   use Format;
 
    require_once 'bindownloadertrait.php';
 
@@ -24,7 +24,7 @@
       protected function getInstalledVers() {
          $dir = DIR_MYSQL;
 
-         if (!file_exists($dir)) {
+         if(!file_exists($dir)) {
             die('MySQL directory not found');
          } else {
             $scan = scandir($dir);

@@ -2,7 +2,7 @@
 
    namespace Setup;
 
-   use \Settings as SET;
+   use Settings as SET;
 
    /**
     * Sets up PHP
@@ -24,11 +24,11 @@
        * @author Art <a.molcanovas@gmail.com>
        */
       function __construct() {
-         $this->dest = DIR_TMP . 'php.zip';
+         $this->dest       = DIR_TMP . 'php.zip';
          $this->dest_unzip = DIR_TMP . 'php' . DIRECTORY_SEPARATOR;
 
          $this->binchecker = new \BinChecker\PHP();
-         $this->links = $this->binchecker->getLinks();
+         $this->links      = $this->binchecker->getLinks();
 
          $this
             ->promptDownload()
@@ -46,9 +46,9 @@
        */
       protected function editIni() {
          $timezone = SET::$s->php_date_timezone;
-         $ini = $this->unzipped_destination . 'php.ini';
+         $ini      = $this->unzipped_destination . 'php.ini';
 
-         if (!$timezone) {
+         if(!$timezone) {
             $timezone = 'Europe/London';
             _echo('Your timezone setting wasn\'t found. Setting it to Europe/London.');
             SET::$s->php_date_timezone = $timezone;
@@ -59,24 +59,26 @@
 
          $err_log_dir = '"' . str_replace(DIRECTORY_SEPARATOR, '/', DIR_LOGS) . 'php/php_errors.log"';
 
-         if ($contents) {
+         if($contents) {
             $contents = str_ireplace([
-               ';date.timezone =',
-               '; extension_dir = "ext"',
-               ';error_log = php_errors.log'
-            ], [
-               'date.timezone = ' . $timezone,
-               'extension_dir = "' . $this->unzipped_destination . 'ext"',
-               'error_log = ' . $err_log_dir . ''
-            ], $contents);
+                                        ';date.timezone =',
+                                        '; extension_dir = "ext"',
+                                        ';error_log = php_errors.log'
+                                     ],
+                                     [
+                                        'date.timezone = ' . $timezone,
+                                        'extension_dir = "' . $this->unzipped_destination . 'ext"',
+                                        'error_log = ' . $err_log_dir . ''
+                                     ],
+                                     $contents);
 
-            if (file_put_contents($ini, $contents) !== false) {
+            if(file_put_contents($ini, $contents) !== false) {
                _echo('php.ini edited');
             } else {
                $msg = 'Failed to edit php.ini. You will have to set the following yourself:' . PHP_EOL
-                  . "\t Find ';date.timezone =' and change it to 'date.timezone = ' . $timezone'" . PHP_EOL
-                  . "\t Find '; extension_dir = \"ext\"' and change it to 'extension_dir = \"ext\"'" . PHP_EOL
-                  . "\t Find ';error_log = php_errors.log' and change it to 'error_log = $err_log_dir'";
+                      . "\t Find ';date.timezone =' and change it to 'date.timezone = ' . $timezone'" . PHP_EOL
+                      . "\t Find '; extension_dir = \"ext\"' and change it to 'extension_dir = \"ext\"'" . PHP_EOL
+                      . "\t Find ';error_log = php_errors.log' and change it to 'error_log = $err_log_dir'";
                _echo($msg . PHP_EOL . 'Press ENTER to continue');
                \IO::readline();
             }
@@ -94,11 +96,11 @@
        * @return PHP
        */
       protected function renameIni() {
-         if (!file_exists($this->unzipped_destination . 'php.ini')) {
+         if(!file_exists($this->unzipped_destination . 'php.ini')) {
             $file = null;
-            if (file_exists($this->unzipped_destination . 'php.ini-development')) {
+            if(file_exists($this->unzipped_destination . 'php.ini-development')) {
                $file = $this->unzipped_destination . 'php.ini-development';
-            } elseif (file_exists($this->unzipped_destination . 'php.ini-production')) {
+            } elseif(file_exists($this->unzipped_destination . 'php.ini-production')) {
                $file = $this->unzipped_destination . 'php.ini-production';
             } else {
                die('Could not find sample php.ini. Aborting.');
@@ -106,7 +108,7 @@
 
             copy($file, $this->unzipped_destination . 'php.ini');
 
-            if (!file_exists($this->unzipped_destination . 'php.ini')) {
+            if(!file_exists($this->unzipped_destination . 'php.ini')) {
                die('Failed to copy sample php.ini. Aborting.');
             } else {
                _echo('Sample php.ini copied');
@@ -127,10 +129,10 @@
       protected function copy() {
          _echo('Copying unzipped contents..');
 
-         $source = rtrim($this->dest_unzip, DIRECTORY_SEPARATOR);
+         $source                     = rtrim($this->dest_unzip, DIRECTORY_SEPARATOR);
          $this->unzipped_destination = DIR_PHP . $this->version;
 
-         if (!file_exists($this->unzipped_destination)) {
+         if(!file_exists($this->unzipped_destination)) {
             mkdir($this->unzipped_destination . DIRECTORY_SEPARATOR, 777, true);
          }
 
@@ -138,7 +140,9 @@
 
          $this->unzipped_destination .= DIRECTORY_SEPARATOR;
 
-         if (file_exists($this->unzipped_destination . 'php.ini-development') || file_exists($this->unzipped_destination . 'php.ini')) {
+         if(file_exists($this->unzipped_destination . 'php.ini-development') ||
+            file_exists($this->unzipped_destination . 'php.ini')
+         ) {
             _echo('Copy successful!');
             $this->updateSettings();
             $this->cleanup();

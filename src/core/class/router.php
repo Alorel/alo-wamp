@@ -13,11 +13,11 @@
        * @author Art <a.molcanovas@gmail.com>
        */
       function route() {
-         if (!defined('PHPUNIT_RUNNING')) {
+         if(!defined('PHPUNIT_RUNNING')) {
             $route = trim(strtolower(get(IO::$argv[0])));
-            $file = DIR_CORE . 'routes' . DIRECTORY_SEPARATOR . $route . '.php';
+            $file  = DIR_CORE . 'routes' . DIRECTORY_SEPARATOR . $route . '.php';
 
-            if (file_exists($file)) {
+            if(file_exists($file)) {
                include $file;
             } else {
                _echo('The route ' . $route . ' is invalid.');

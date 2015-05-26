@@ -2,7 +2,7 @@
 
    namespace Setup;
 
-   use \Downloader;
+   use Downloader;
 
    /**
     * Abstract setup for binaries
@@ -39,18 +39,18 @@
        * @return AbstractBinSetup
        */
       protected function promptDownload() {
-         if (!empty($this->links)) {
+         if(!empty($this->links)) {
             $version_numbers = array_keys($this->links);
             _echo('The following versions were found for download: ' . PHP_EOL . "\t"
-               . implode(PHP_EOL . "\t", $version_numbers));
+                  . implode(PHP_EOL . "\t", $version_numbers));
 
             $io = trim(\IO::readline('Which version would you like to download? Input N to abort'));
 
-            if (!$io) {
+            if(!$io) {
                $this->promptDownload();
-            } elseif ($io == 'n') {
+            } elseif($io == 'n') {
                die('Aborting.');
-            } elseif (!isset($this->links[$io])) {
+            } elseif(!isset($this->links[$io])) {
                _echo('The version you selected is not available for download.');
                $this->promptDownload();
             } else {
@@ -76,7 +76,7 @@
       protected function download() {
          $this->downloader = new Downloader($this->links[$this->version], $this->dest);
 
-         if ($this->downloader->download()) {
+         if($this->downloader->download()) {
             _echo('Download successful. Setting up version ' . $this->version);
             sleep(1);
          } else {

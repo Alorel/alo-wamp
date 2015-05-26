@@ -2,8 +2,8 @@
 
    namespace Setup;
 
-   use \Settings as SET;
-   use \Service;
+   use Service;
+   use Settings as SET;
 
    /**
     * Sets up Redis
@@ -25,11 +25,11 @@
        * @author Art <a.molcanovas@gmail.com>
        */
       function __construct() {
-         $this->dest = DIR_TMP . 'redis.zip';
+         $this->dest       = DIR_TMP . 'redis.zip';
          $this->dest_unzip = DIR_TMP . 'redis' . DIRECTORY_SEPARATOR;
 
          $this->binchecker = new \BinChecker\Redis();
-         $this->links = $this->binchecker->getLinks();
+         $this->links      = $this->binchecker->getLinks();
 
          $this
             ->promptDownload()
@@ -46,13 +46,18 @@
        * @return Redis
        */
       protected function installService() {
-         if (Service::exists('aloredis')) {
+         if(Service::exists('aloredis')) {
             _echo('Removing previous AloWAMP Redis service');
             _echo(Service::delete('aloredis'));
          }
 
          _echo('Installing Redis service');
-         _echo(Service::installExe('aloredis', DIR_REDIS . $this->version . DIRECTORY_SEPARATOR . 'redis-server.exe --service-run --service-name aloredis', 'AloWAMP Redis ' . $this->version));
+         _echo(Service::installExe('aloredis',
+                                   DIR_REDIS .
+                                   $this->version .
+                                   DIRECTORY_SEPARATOR .
+                                   'redis-server.exe --service-run --service-name aloredis',
+                                   'AloWAMP Redis ' . $this->version));
 
          return $this;
       }
@@ -66,23 +71,25 @@
       protected function editConf() {
          $file = DIR_REDIS . $this->version . DIRECTORY_SEPARATOR . 'redis.windows.conf';
 
-         if (!file_exists($file)) {
+         if(!file_exists($file)) {
             die('Redis configuration file not found. Aborting.');
          } else {
             _echo('Editing Redis configuration file');
             $contents = file_get_contents($file);
 
             $contents = str_ireplace([
-               '# bind 127.0.0.1',
-               'tcp-keepalive 0',
-               'logfile ""'
-            ], [
-               'bind 127.0.0.1',
-               'tcp-keepalive 60',
-               'logfile "' . DIR_LOGS . 'redis' . DIRECTORY_SEPARATOR . 'redis.log"'
-            ], $contents);
+                                        '# bind 127.0.0.1',
+                                        'tcp-keepalive 0',
+                                        'logfile ""'
+                                     ],
+                                     [
+                                        'bind 127.0.0.1',
+                                        'tcp-keepalive 60',
+                                        'logfile "' . DIR_LOGS . 'redis' . DIRECTORY_SEPARATOR . 'redis.log"'
+                                     ],
+                                     $contents);
 
-            if (file_put_contents($file, $contents) !== false) {
+            if(file_put_contents($file, $contents) !== false) {
                _echo('Redis config file edited');
             } else {
                die('Failed to edit Redis config file. Abording.');
@@ -101,10 +108,10 @@
       protected function copy() {
          _echo('Copying unzipped contents..');
 
-         $source = rtrim($this->dest_unzip, DIRECTORY_SEPARATOR);
+         $source                     = rtrim($this->dest_unzip, DIRECTORY_SEPARATOR);
          $this->unzipped_destination = DIR_REDIS . $this->version;
 
-         if (!file_exists($this->unzipped_destination)) {
+         if(!file_exists($this->unzipped_destination)) {
             mkdir($this->unzipped_destination . DIRECTORY_SEPARATOR, 777, true);
          }
 
@@ -112,7 +119,7 @@
 
          $this->unzipped_destination .= DIRECTORY_SEPARATOR;
 
-         if (file_exists($this->unzipped_destination . 'redis-server.exe')) {
+         if(file_exists($this->unzipped_destination . 'redis-server.exe')) {
             _echo('Copy successful!');
             $this->updateSettings();
             $this->cleanup();

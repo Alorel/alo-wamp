@@ -15,8 +15,8 @@
        * @author Art <a.molcanovas@gmail.com>
        */
       function __construct() {
-         $this->ini = 'mysql_version';
-         $this->dir = DIR_MYSQL;
+         $this->ini     = 'mysql_version';
+         $this->dir     = DIR_MYSQL;
          $this->service = 'alomysql';
 
          parent::__construct();

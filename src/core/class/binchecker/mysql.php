@@ -2,10 +2,10 @@
 
    namespace BinChecker;
 
-   use \cURL;
-   use \DOMDocument;
-   use \DOMXPath;
-   use \DOMNode;
+   use cURL;
+   use DOMDocument;
+   use DOMNode;
+   use DOMXPath;
 
    /**
     * Checks for MySQL binary downloads
@@ -32,7 +32,7 @@
          $this->curl = new cURL(self::HOST . '/downloads/mysql');
          $this->curl->exec();
 
-         if ($this->curl->errno() != CURLE_OK) {
+         if($this->curl->errno() != CURLE_OK) {
             die('Failed to load MySQL download page');
          } else {
             _echo('MySQL download page loaded');
@@ -58,26 +58,26 @@
          $versions = $xpath->query('//b[contains(., "32-bit")]');
 
          /** @var DOMNode $v */
-         foreach ($versions as $v) {
+         foreach($versions as $v) {
             $parent = $v->parentNode->parentNode;
 
-            if ($parent) {
+            if($parent) {
                $tr = new DOMDocument();
                @$tr->loadHTML($parent->C14N());
                $tr = new DOMXPath($tr);
 
                $ver = $tr->query('//td[contains(@class,"col3")]')->item(0);
 
-               if ($ver) {
+               if($ver) {
                   $ver = strip_tags($ver->C14N());
 
                   $link = $tr->query('//a[starts-with(@href,"/downloads/")]')->item(0);
 
-                  if ($link) {
+                  if($link) {
                      $matches = [];
                      preg_match('~"[a-z0-9\-\?\./=]+"~i', $link->C14N(), $matches);
 
-                     if (!empty($matches)) {
+                     if(!empty($matches)) {
                         $this->download_links[$ver] = self::HOST . trim($matches[0], ' "');
                      }
                   }
@@ -85,7 +85,7 @@
             }
          }
 
-         if (empty($this->download_links)) {
+         if(empty($this->download_links)) {
             _echo('No download links found.');
          } else {
             $this->getAcutalLinks();
@@ -101,23 +101,23 @@
        * @return MySQL
        */
       protected function getAcutalLinks() {
-         foreach ($this->download_links as $version => &$download_page) {
+         foreach($this->download_links as $version => &$download_page) {
             $html = file_get_contents($download_page);
 
-            if ($html) {
+            if($html) {
                $domdoc = new DOMDocument();
                @$domdoc->loadHTML($html);
 
                $xpath = new DOMXPath($domdoc);
-               $link = $xpath
+               $link  = $xpath
                   ->query('//a[contains(.,"No thanks, just start my download.")]')
                   ->item(0);
 
-               if ($link) {
+               if($link) {
                   $matches = [];
                   preg_match('~"[a-z0-9\-\?\./=]+"~i', $link->C14N(), $matches);
 
-                  if (!empty($matches)) {
+                  if(!empty($matches)) {
                      $download_page = self::HOST . trim($matches[0], ' "');
                      continue;
                   }
@@ -127,7 +127,7 @@
             unset($this->download_links[$version]);
          }
 
-         if (empty($this->download_links)) {
+         if(empty($this->download_links)) {
             _echo('No download links found.');
          } else {
             _echo(count($this->download_links) . ' MySQL versions found for download.');

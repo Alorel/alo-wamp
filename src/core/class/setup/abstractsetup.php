@@ -38,21 +38,32 @@
       protected $cleanup = true;
 
       /**
+       * Performs cleanup if needed
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       */
+      function __destruct() {
+         $this->cleanup();
+      }
+
+      /**
        * Cleans up in tmp
        *
        * @author Art <a.molcanovas@gmail.com>
+       *
        * @param array $files Files to clear
+       *
        * @return AbstractSetup
        */
       protected function cleanup(array $files = []) {
-         if ($this->cleanup) {
+         if($this->cleanup) {
             $files = array_merge([$this->dest, $this->dest_unzip], $files);
 
-            foreach ($files as $f) {
-               if (file_exists($f)) {
+            foreach($files as $f) {
+               if(file_exists($f)) {
                   _echo('Cleaning up ' . $f);
 
-                  if (is_dir($f)) {
+                  if(is_dir($f)) {
                      shell_exec('rd /s /q "' . $f . '"');
                   } else {
                      unlink($f);
@@ -75,8 +86,8 @@
          $zip = new \ZipArchive();
          $res = $zip->open($this->dest);
 
-         if ($res === true) {
-            if (file_exists($this->dest_unzip)) {
+         if($res === true) {
+            if(file_exists($this->dest_unzip)) {
                shell_exec('rd /s /q "' . rtrim($this->dest_unzip, '\\/') . '"');
             }
 
@@ -87,14 +98,5 @@
          }
 
          return $this;
-      }
-
-      /**
-       * Performs cleanup if needed
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       */
-      function __destruct() {
-         $this->cleanup();
       }
    }

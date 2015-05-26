@@ -2,7 +2,7 @@
 
    namespace BinDownloader;
 
-   use \Format;
+   use Format;
 
    require_once 'bindownloadertrait.php';
 
@@ -18,7 +18,7 @@
       protected function getInstalledVers() {
          $dir = DIR_REDIS;
 
-         if (!file_exists($dir)) {
+         if(!file_exists($dir)) {
             die('Redis directory not found');
          } else {
             $scan = scandir($dir);

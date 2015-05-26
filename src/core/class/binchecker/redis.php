@@ -2,10 +2,10 @@
 
    namespace BinChecker;
 
-   use \cURL;
-   use \DOMDocument;
-   use \DOMXPath;
-   use \DOMNode;
+   use cURL;
+   use DOMDocument;
+   use DOMNode;
+   use DOMXPath;
 
    /**
     * Checks for Redis binary downloads
@@ -31,20 +31,20 @@
          $d = new DOMDocument();
          @$d->loadhtml($this->raw_html);
 
-         $xpath = new DOMXPath($d);
+         $xpath    = new DOMXPath($d);
          $versions = @$xpath->query('//strong[contains(.,".zip")]');
 
-         if ($versions) {
+         if($versions) {
             $url_regex = '[a-z0-9\.\-_]+';
-            $url_base = 'https://github.com/MSOpenTech/redis/releases/download/';
+            $url_base  = 'https://github.com/MSOpenTech/redis/releases/download/';
             /** @var DOMNode $strong */
-            foreach ($versions as $strong) {
+            foreach($versions as $strong) {
                $matches = [];
                preg_match('~' . $url_regex . '/' . $url_regex . '\.zip~i', $strong->parentNode->C14N(), $matches);
 
-               if ($matches) {
+               if($matches) {
                   $split = explode('/', $matches[0]);
-                  $key = substr($split[0], 4);
+                  $key   = substr($split[0], 4);
 
                   $this->download_links[$key] = $url_base . implode('/', $split);
                }
@@ -67,7 +67,7 @@
          $this->curl = new cURL(self::HOST . '/releases');
          $this->curl->exec();
 
-         if ($this->curl->errno() != CURLE_OK) {
+         if($this->curl->errno() != CURLE_OK) {
             die('Failed to load Redis download page');
          } else {
             _echo('Redis download page loaded');

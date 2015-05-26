@@ -15,8 +15,8 @@
        * @author Art <a.molcanovas@gmail.com>
        */
       function __construct() {
-         $this->ini = 'redis_version';
-         $this->dir = DIR_REDIS;
+         $this->ini     = 'redis_version';
+         $this->dir     = DIR_REDIS;
          $this->service = 'aloredis';
 
          parent::__construct();

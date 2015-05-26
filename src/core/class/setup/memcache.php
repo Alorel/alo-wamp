@@ -2,7 +2,7 @@
 
    namespace Setup;
 
-   use \Service;
+   use Service;
 
    /**
     * Sets up Memcache
@@ -24,12 +24,12 @@
        * @author Art <a.molcanovas@gmail.com>
        */
       function __construct() {
-         $this->dest = DIR_TMP . 'memcache.zip';
+         $this->dest       = DIR_TMP . 'memcache.zip';
          $this->dest_unzip = DIR_TMP . 'AloWAMP-bin-memcached' . DIRECTORY_SEPARATOR;
          $this->download()
-            ->unzip()
-            ->copy()
-            ->installService();
+              ->unzip()
+              ->copy()
+              ->installService();
       }
 
       /**
@@ -39,7 +39,7 @@
        * @return Memcache
        */
       protected function installService() {
-         if (Service::exists('alomemcache')) {
+         if(Service::exists('alomemcache')) {
             _echo('Removing previous AloWAMP Memcache service');
             _echo(Service::delete('alomemcache'));
          }
@@ -59,13 +59,17 @@
       protected function copy() {
          _echo('Copying unzipped contents..');
 
-         shell_exec('xcopy /s /e "' . rtrim($this->dest_unzip, DIRECTORY_SEPARATOR) . '" "' . rtrim(DIR_INDEX, DIRECTORY_SEPARATOR) . '"');
+         shell_exec('xcopy /s /e "' .
+                    rtrim($this->dest_unzip, DIRECTORY_SEPARATOR) .
+                    '" "' .
+                    rtrim(DIR_INDEX, DIRECTORY_SEPARATOR) .
+                    '"');
 
-         if (file_exists(DIR_INDEX . 'README.md')) {
+         if(file_exists(DIR_INDEX . 'README.md')) {
             unlink(DIR_INDEX . 'README.md');
          }
 
-         if (file_exists(DIR_MEMCACHE)) {
+         if(file_exists(DIR_MEMCACHE)) {
             _echo('Copy successful!');
             $this->cleanup();
          } else {
@@ -86,8 +90,8 @@
          $zip = new \ZipArchive();
          $res = $zip->open($this->dest);
 
-         if ($res === true) {
-            if (file_exists($this->dest_unzip)) {
+         if($res === true) {
+            if(file_exists($this->dest_unzip)) {
                rmdir($this->dest_unzip);
             }
 
@@ -109,7 +113,7 @@
       protected function download() {
          $this->downloader = new \Downloader(self::MEMCACHE_DOWNLOAD_SOURCE, $this->dest);
 
-         if ($this->downloader->download()) {
+         if($this->downloader->download()) {
             _echo('Download successful. Setting up Memcache...');
          } else {
             die('Download failed. Aborting setup.');
