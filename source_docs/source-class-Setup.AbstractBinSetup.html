@@ -7,8 +7,8 @@
 
 	<title>File core/class/setup/abstractbinsetup.php | AloWAMP source documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1647505039"></script>
-	<script type="text/javascript" src="elementlist.js?4135045334"></script>
+	<script type="text/javascript" src="resources/combined.js?3521877029"></script>
+	<script type="text/javascript" src="elementlist.js?2484619474"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/bootstrap.min.css?260161822" />
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?2015443609" />
 
@@ -103,7 +103,7 @@
 </span><span id="2" class="l"><a class="l" href="#2"> 2 </a>
 </span><span id="3" class="l"><a class="l" href="#3"> 3 </a>   <span class="php-keyword1">namespace</span> Setup;
 </span><span id="4" class="l"><a class="l" href="#4"> 4 </a>
-</span><span id="5" class="l"><a class="l" href="#5"> 5 </a>   <span class="php-keyword1">use</span> \Downloader;
+</span><span id="5" class="l"><a class="l" href="#5"> 5 </a>   <span class="php-keyword1">use</span> Downloader;
 </span><span id="6" class="l"><a class="l" href="#6"> 6 </a>
 </span><span id="7" class="l"><a class="l" href="#7"> 7 </a>   <span class="php-comment">/**
 </span></span><span id="8" class="l"><a class="l" href="#8"> 8 </a><span class="php-comment">    * Abstract setup for binaries
@@ -140,18 +140,18 @@
 </span></span><span id="39" class="l"><a class="l" href="#39">39 </a><span class="php-comment">       * @return AbstractBinSetup
 </span></span><span id="40" class="l"><a class="l" href="#40">40 </a><span class="php-comment">       */</span>
 </span><span id="41" class="l"><a class="l" href="#41">41 </a>      <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_promptDownload" href="#_promptDownload">promptDownload</a>() {
-</span><span id="42" class="l"><a class="l" href="#42">42 </a>         <span class="php-keyword1">if</span> (!<span class="php-keyword1">empty</span>(<span class="php-var">$this</span>-&gt;links)) {
+</span><span id="42" class="l"><a class="l" href="#42">42 </a>         <span class="php-keyword1">if</span>(!<span class="php-keyword1">empty</span>(<span class="php-var">$this</span>-&gt;links)) {
 </span><span id="43" class="l"><a class="l" href="#43">43 </a>            <span class="php-var">$version_numbers</span> = <span class="php-keyword2">array_keys</span>(<span class="php-var">$this</span>-&gt;links);
 </span><span id="44" class="l"><a class="l" href="#44">44 </a>            _echo(<span class="php-quote">'The following versions were found for download: '</span> . PHP_EOL . <span class="php-quote">&quot;\t&quot;</span>
-</span><span id="45" class="l"><a class="l" href="#45">45 </a>               . <span class="php-keyword2">implode</span>(PHP_EOL . <span class="php-quote">&quot;\t&quot;</span>, <span class="php-var">$version_numbers</span>));
+</span><span id="45" class="l"><a class="l" href="#45">45 </a>                  . <span class="php-keyword2">implode</span>(PHP_EOL . <span class="php-quote">&quot;\t&quot;</span>, <span class="php-var">$version_numbers</span>));
 </span><span id="46" class="l"><a class="l" href="#46">46 </a>
 </span><span id="47" class="l"><a class="l" href="#47">47 </a>            <span class="php-var">$io</span> = <span class="php-keyword2">trim</span>(\IO::readline(<span class="php-quote">'Which version would you like to download? Input N to abort'</span>));
 </span><span id="48" class="l"><a class="l" href="#48">48 </a>
-</span><span id="49" class="l"><a class="l" href="#49">49 </a>            <span class="php-keyword1">if</span> (!<span class="php-var">$io</span>) {
+</span><span id="49" class="l"><a class="l" href="#49">49 </a>            <span class="php-keyword1">if</span>(!<span class="php-var">$io</span>) {
 </span><span id="50" class="l"><a class="l" href="#50">50 </a>               <span class="php-var">$this</span>-&gt;promptDownload();
-</span><span id="51" class="l"><a class="l" href="#51">51 </a>            } <span class="php-keyword1">elseif</span> (<span class="php-var">$io</span> == <span class="php-quote">'n'</span>) {
+</span><span id="51" class="l"><a class="l" href="#51">51 </a>            } <span class="php-keyword1">elseif</span>(<span class="php-var">$io</span> == <span class="php-quote">'n'</span>) {
 </span><span id="52" class="l"><a class="l" href="#52">52 </a>               <span class="php-keyword1">die</span>(<span class="php-quote">'Aborting.'</span>);
-</span><span id="53" class="l"><a class="l" href="#53">53 </a>            } <span class="php-keyword1">elseif</span> (!<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;links[<span class="php-var">$io</span>])) {
+</span><span id="53" class="l"><a class="l" href="#53">53 </a>            } <span class="php-keyword1">elseif</span>(!<span class="php-keyword1">isset</span>(<span class="php-var">$this</span>-&gt;links[<span class="php-var">$io</span>])) {
 </span><span id="54" class="l"><a class="l" href="#54">54 </a>               _echo(<span class="php-quote">'The version you selected is not available for download.'</span>);
 </span><span id="55" class="l"><a class="l" href="#55">55 </a>               <span class="php-var">$this</span>-&gt;promptDownload();
 </span><span id="56" class="l"><a class="l" href="#56">56 </a>            } <span class="php-keyword1">else</span> {
@@ -177,7 +177,7 @@
 </span><span id="76" class="l"><a class="l" href="#76">76 </a>      <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_download" href="#_download">download</a>() {
 </span><span id="77" class="l"><a class="l" href="#77">77 </a>         <span class="php-var">$this</span>-&gt;downloader = <span class="php-keyword1">new</span> Downloader(<span class="php-var">$this</span>-&gt;links[<span class="php-var">$this</span>-&gt;version], <span class="php-var">$this</span>-&gt;dest);
 </span><span id="78" class="l"><a class="l" href="#78">78 </a>
-</span><span id="79" class="l"><a class="l" href="#79">79 </a>         <span class="php-keyword1">if</span> (<span class="php-var">$this</span>-&gt;downloader-&gt;download()) {
+</span><span id="79" class="l"><a class="l" href="#79">79 </a>         <span class="php-keyword1">if</span>(<span class="php-var">$this</span>-&gt;downloader-&gt;download()) {
 </span><span id="80" class="l"><a class="l" href="#80">80 </a>            _echo(<span class="php-quote">'Download successful. Setting up version '</span> . <span class="php-var">$this</span>-&gt;version);
 </span><span id="81" class="l"><a class="l" href="#81">81 </a>            <span class="php-keyword2">sleep</span>(<span class="php-num">1</span>);
 </span><span id="82" class="l"><a class="l" href="#82">82 </a>         } <span class="php-keyword1">else</span> {

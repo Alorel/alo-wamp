@@ -60,52 +60,6 @@
       }
 
       /**
-       * Checks if a service is running
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       *
-       * @param string $name
-       *
-       * @return bool
-       */
-      static function is_running($name) {
-         $e         = shell_exec("sc query $name");
-         $e         = explode("\n", $e);
-         $state_row = null;
-
-         foreach($e as $row) {
-            if(strpos($row, 'STATE') !== false) {
-               $state_row = $row;
-               break;
-            }
-         }
-
-         return $state_row && (strpos($state_row, 'STOPPED') !== false);
-      }
-
-      /**
-       * Restarts a service
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       *
-       * @param string $name Service name
-       *
-       * @return string shell_exec() output
-       */
-      static function restart($name) {
-         if(self::is_running($name)) {
-            do {
-               self::stop($name);
-               sleep(1);
-            } while(self::is_running($name));
-         }
-
-         var_dump(self::is_running($name), $name);
-
-         return self::start($name);
-      }
-
-      /**
        * Installes a service from an executable
        *
        * @author Art <a.molcanovas@gmail.com>

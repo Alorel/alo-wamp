@@ -98,7 +98,9 @@
     * Shortcut for isset($var) ? $var : null
     *
     * @author Art <a.molcanovas@gmail.com>
+    *
     * @param mixed $var Reference to the variable
+    *
     * @return mixed|null The variable or NULL if it's not defined
     */
    function get(&$var) {
@@ -109,6 +111,7 @@
     * Output wapper
     *
     * @author Art <a.molcanovas@gmail.com>
+    *
     * @param string $str String to echo
     */
    function _echo($str) {

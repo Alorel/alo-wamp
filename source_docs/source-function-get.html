@@ -7,8 +7,8 @@
 
 	<title>File core/core.php | AloWAMP source documentation</title>
 
-	<script type="text/javascript" src="resources/combined.js?1647505039"></script>
-	<script type="text/javascript" src="elementlist.js?4135045334"></script>
+	<script type="text/javascript" src="resources/combined.js?3521877029"></script>
+	<script type="text/javascript" src="elementlist.js?2484619474"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/bootstrap.min.css?260161822" />
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?2015443609" />
 
@@ -206,33 +206,36 @@
 </span></span><span id="98" class="l"><a class="l" href="#98"> 98 </a><span class="php-comment">    * Shortcut for isset($var) ? $var : null
 </span></span><span id="99" class="l"><a class="l" href="#99"> 99 </a><span class="php-comment">    *
 </span></span><span id="100" class="l"><a class="l" href="#100">100 </a><span class="php-comment">    * @author Art &lt;a.molcanovas@gmail.com&gt;
-</span></span><span id="101" class="l"><a class="l" href="#101">101 </a><span class="php-comment">    * @param mixed $var Reference to the variable
-</span></span><span id="102" class="l"><a class="l" href="#102">102 </a><span class="php-comment">    * @return mixed|null The variable or NULL if it's not defined
-</span></span><span id="103" class="l"><a class="l" href="#103">103 </a><span class="php-comment">    */</span>
-</span><span id="104" class="l"><a class="l" href="#104">104 </a>   <span class="php-keyword1">function</span> <a id="_get" href="#_get">get</a>(&amp;<span class="php-var">$var</span>) {
-</span><span id="105" class="l"><a class="l" href="#105">105 </a>      <span class="php-keyword1">return</span> <span class="php-keyword1">isset</span>(<span class="php-var">$var</span>) ? <span class="php-var">$var</span> : <span class="php-keyword1">null</span>;
-</span><span id="106" class="l"><a class="l" href="#106">106 </a>   }
-</span><span id="107" class="l"><a class="l" href="#107">107 </a>
-</span><span id="108" class="l"><a class="l" href="#108">108 </a>   <span class="php-comment">/**
-</span></span><span id="109" class="l"><a class="l" href="#109">109 </a><span class="php-comment">    * Output wapper
-</span></span><span id="110" class="l"><a class="l" href="#110">110 </a><span class="php-comment">    *
-</span></span><span id="111" class="l"><a class="l" href="#111">111 </a><span class="php-comment">    * @author Art &lt;a.molcanovas@gmail.com&gt;
-</span></span><span id="112" class="l"><a class="l" href="#112">112 </a><span class="php-comment">    * @param string $str String to echo
-</span></span><span id="113" class="l"><a class="l" href="#113">113 </a><span class="php-comment">    */</span>
-</span><span id="114" class="l"><a class="l" href="#114">114 </a>   <span class="php-keyword1">function</span> <a id="__echo" href="#__echo">_echo</a>(<span class="php-var">$str</span>) {
-</span><span id="115" class="l"><a class="l" href="#115">115 </a>      <span class="php-keyword1">echo</span> <span class="php-quote">'['</span> . <span class="php-keyword2">date</span>(<span class="php-quote">'Y-m-d H:i:s'</span>) . <span class="php-quote">'] '</span> . <span class="php-var">$str</span> . PHP_EOL;
-</span><span id="116" class="l"><a class="l" href="#116">116 </a>   }
-</span><span id="117" class="l"><a class="l" href="#117">117 </a>
-</span><span id="118" class="l"><a class="l" href="#118">118 </a>   <span class="php-keyword1">require_once</span> DIR_CORE . <span class="php-quote">'class'</span> . DIRECTORY_SEPARATOR . <span class="php-quote">'handler.php'</span>;
-</span><span id="119" class="l"><a class="l" href="#119">119 </a>
-</span><span id="120" class="l"><a class="l" href="#120">120 </a>   <span class="php-keyword2">spl_autoload_register</span>(<span class="php-quote">'Handler::autoloader'</span>);
-</span><span id="121" class="l"><a class="l" href="#121">121 </a>   IO::echo_lines();
-</span><span id="122" class="l"><a class="l" href="#122">122 </a>   <span class="php-keyword1">new</span> Settings();
-</span><span id="123" class="l"><a class="l" href="#123">123 </a>
-</span><span id="124" class="l"><a class="l" href="#124">124 </a>   <span class="php-var">$r</span> = <span class="php-keyword1">new</span> Router();
-</span><span id="125" class="l"><a class="l" href="#125">125 </a>   <span class="php-var">$r</span>-&gt;route();
+</span></span><span id="101" class="l"><a class="l" href="#101">101 </a><span class="php-comment">    *
+</span></span><span id="102" class="l"><a class="l" href="#102">102 </a><span class="php-comment">    * @param mixed $var Reference to the variable
+</span></span><span id="103" class="l"><a class="l" href="#103">103 </a><span class="php-comment">    *
+</span></span><span id="104" class="l"><a class="l" href="#104">104 </a><span class="php-comment">    * @return mixed|null The variable or NULL if it's not defined
+</span></span><span id="105" class="l"><a class="l" href="#105">105 </a><span class="php-comment">    */</span>
+</span><span id="106" class="l"><a class="l" href="#106">106 </a>   <span class="php-keyword1">function</span> <a id="_get" href="#_get">get</a>(&amp;<span class="php-var">$var</span>) {
+</span><span id="107" class="l"><a class="l" href="#107">107 </a>      <span class="php-keyword1">return</span> <span class="php-keyword1">isset</span>(<span class="php-var">$var</span>) ? <span class="php-var">$var</span> : <span class="php-keyword1">null</span>;
+</span><span id="108" class="l"><a class="l" href="#108">108 </a>   }
+</span><span id="109" class="l"><a class="l" href="#109">109 </a>
+</span><span id="110" class="l"><a class="l" href="#110">110 </a>   <span class="php-comment">/**
+</span></span><span id="111" class="l"><a class="l" href="#111">111 </a><span class="php-comment">    * Output wapper
+</span></span><span id="112" class="l"><a class="l" href="#112">112 </a><span class="php-comment">    *
+</span></span><span id="113" class="l"><a class="l" href="#113">113 </a><span class="php-comment">    * @author Art &lt;a.molcanovas@gmail.com&gt;
+</span></span><span id="114" class="l"><a class="l" href="#114">114 </a><span class="php-comment">    *
+</span></span><span id="115" class="l"><a class="l" href="#115">115 </a><span class="php-comment">    * @param string $str String to echo
+</span></span><span id="116" class="l"><a class="l" href="#116">116 </a><span class="php-comment">    */</span>
+</span><span id="117" class="l"><a class="l" href="#117">117 </a>   <span class="php-keyword1">function</span> <a id="__echo" href="#__echo">_echo</a>(<span class="php-var">$str</span>) {
+</span><span id="118" class="l"><a class="l" href="#118">118 </a>      <span class="php-keyword1">echo</span> <span class="php-quote">'['</span> . <span class="php-keyword2">date</span>(<span class="php-quote">'Y-m-d H:i:s'</span>) . <span class="php-quote">'] '</span> . <span class="php-var">$str</span> . PHP_EOL;
+</span><span id="119" class="l"><a class="l" href="#119">119 </a>   }
+</span><span id="120" class="l"><a class="l" href="#120">120 </a>
+</span><span id="121" class="l"><a class="l" href="#121">121 </a>   <span class="php-keyword1">require_once</span> DIR_CORE . <span class="php-quote">'class'</span> . DIRECTORY_SEPARATOR . <span class="php-quote">'handler.php'</span>;
+</span><span id="122" class="l"><a class="l" href="#122">122 </a>
+</span><span id="123" class="l"><a class="l" href="#123">123 </a>   <span class="php-keyword2">spl_autoload_register</span>(<span class="php-quote">'Handler::autoloader'</span>);
+</span><span id="124" class="l"><a class="l" href="#124">124 </a>   IO::echo_lines();
+</span><span id="125" class="l"><a class="l" href="#125">125 </a>   <span class="php-keyword1">new</span> Settings();
 </span><span id="126" class="l"><a class="l" href="#126">126 </a>
-</span><span id="127" class="l"><a class="l" href="#127">127 </a></span></code></pre>
+</span><span id="127" class="l"><a class="l" href="#127">127 </a>   <span class="php-var">$r</span> = <span class="php-keyword1">new</span> Router();
+</span><span id="128" class="l"><a class="l" href="#128">128 </a>   <span class="php-var">$r</span>-&gt;route();
+</span><span id="129" class="l"><a class="l" href="#129">129 </a>
+</span><span id="130" class="l"><a class="l" href="#130">130 </a></span></code></pre>
 	</div>
 
 	<div id="footer">

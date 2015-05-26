@@ -10,7 +10,7 @@
    array_shift(IO::$argv);
    $launch = [];
 
-   if (!IO::$argv) {
+   if(!IO::$argv) {
       $launch = array_keys($services);
    } else {
       $launch = IO::$argv;

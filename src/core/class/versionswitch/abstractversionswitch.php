@@ -67,93 +67,6 @@
       }
 
       /**
-       * Updates dependencies
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       * @return AbstractVersionSwitch
-       */
-      function updateDependencies() {
-         $allowed = [DIR_APACHE];
-
-         _echo('Checking dependencies');
-
-         foreach($this->dependent_dirs as $d) {
-            if(file_exists($d) && in_array($d, $allowed)) {
-               $scan = scandir($d);
-               Format::formatScandir($scan);
-
-               if(!empty($scan)) {
-                  $method = $service = false;
-
-                  switch($d) {
-                     case DIR_APACHE:
-                        $method = 'updateApache';
-                        $service = 'aloapache';
-                        break;
-                  }
-
-                  if($method) {
-                     foreach($scan as $version) {
-                        call_user_func([$this, $method], $version);
-                     }
-
-                     if($service && Service::exists($service)) {
-                        _echo('Restarting service');
-                        Service::restart($service);
-                     }
-                  }
-               }
-            }
-         }
-
-         _echo('Switch complete');
-
-         return $this;
-      }
-
-      /**
-       * Restarts any relevant services
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       * @return AbstractVersionSwitch
-       */
-      protected function restartService() {
-         if($this->service) {
-            Service::restart($this->service);
-         }
-
-         return $this;
-      }
-
-      /**
-       * Updates apache settings
-       *
-       * @author Art <a.molcanovas@gmail.com>
-       *
-       * @param string $version Which version to update
-       */
-      protected function updateApache($version) {
-         _echo('Updating Apache ' . $version);
-         $file = DIR_APACHE . $version . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'httpd.conf';
-
-         if(!file_exists($file)) {
-            _echo('Failed to update ' . $version . ': httpd.conf not found');
-         } else {
-            $contents = file_get_contents($file);
-            $contents =
-               str_ireplace('bin' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . $this->old_version,
-                            'bin' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . $this->new_version,
-                            $contents);
-
-            if(file_put_contents($file, $contents) !== false) {
-               _echo($version . ' updated');
-            } else {
-               _echo('Failed to edit ' . $version . '\'s httpd.conf');
-            }
-         }
-      }
-
-      /**
        * Attempts to switch versions
        *
        * @author Art <a.molcanovas@gmail.com>
@@ -196,5 +109,100 @@
          }
 
          return $this;
+      }
+
+      /**
+       * Restarts any relevant services
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return AbstractVersionSwitch
+       */
+      protected function restartService() {
+         if($this->service) {
+            Service::stop($this->service);
+            for($i = 0; $i < 10; $i++) {
+               _echo('Waiting...');
+            }
+            Service::start($this->service);
+         }
+
+         return $this;
+      }
+
+      /**
+       * Updates dependencies
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       * @return AbstractVersionSwitch
+       */
+      function updateDependencies() {
+         $allowed = [DIR_APACHE];
+
+         _echo('Checking dependencies');
+
+         foreach($this->dependent_dirs as $d) {
+            if(file_exists($d) && in_array($d, $allowed)) {
+               $scan = scandir($d);
+               Format::formatScandir($scan);
+
+               if(!empty($scan)) {
+                  $method = $service = false;
+
+                  switch($d) {
+                     case DIR_APACHE:
+                        $method  = 'updateApache';
+                        $service = 'aloapache';
+                        break;
+                  }
+
+                  if($method) {
+                     foreach($scan as $version) {
+                        call_user_func([$this, $method], $version);
+                     }
+
+                     if($service && Service::exists($service)) {
+                        _echo('Restarting service');
+                        Service::stop($service);
+                        for($i = 0; $i < 10; $i++) {
+                           _echo('Waiting...');
+                        }
+                        Service::start($service);
+                     }
+                  }
+               }
+            }
+         }
+
+         _echo('Switch complete');
+
+         return $this;
+      }
+
+      /**
+       * Updates apache settings
+       *
+       * @author Art <a.molcanovas@gmail.com>
+       *
+       * @param string $version Which version to update
+       */
+      protected function updateApache($version) {
+         _echo('Updating Apache ' . $version);
+         $file = DIR_APACHE . $version . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'httpd.conf';
+
+         if(!file_exists($file)) {
+            _echo('Failed to update ' . $version . ': httpd.conf not found');
+         } else {
+            $contents = file_get_contents($file);
+            $contents =
+               str_ireplace('bin' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . $this->old_version,
+                            'bin' . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . $this->new_version,
+                            $contents);
+
+            if(file_put_contents($file, $contents) !== false) {
+               _echo($version . ' updated');
+            } else {
+               _echo('Failed to edit ' . $version . '\'s httpd.conf');
+            }
+         }
       }
    }
