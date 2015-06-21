@@ -1,12 +1,6 @@
 ![Logo](https://cloud.githubusercontent.com/assets/4998038/7652717/3ced6726-fb07-11e4-9d2e-7201085c2831.png)
 
-[![Licence](https://img.shields.io/github/license/alorel/aloWAMP.svg?style=plastic&label=Licence)](LICENCE)
-
-[![NuGet release](http://img.shields.io/nuget/v/aloWAMP.svg?label=NuGet%20release&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![NuGET pre-release](http://img.shields.io/nuget/vpre/aloWAMP.svg?label=NuGet%20pre-release&color=orange&style=plastic)](https://www.nuget.org/packages/AloWAMP/) 
-
-[![Packagist release](https://img.shields.io/packagist/v/alorel/alo-wamp.svg?style=plastic&label=Packagist%20release)](https://packagist.org/packages/alorel/alo-wamp) [![Packagist pre-release](https://img.shields.io/packagist/vpre/alorel/alo-wamp.svg?style=plastic&label=Packagist%20pre-release)](https://packagist.org/packages/alorel/alo-wamp)
-
-[![NuGET downloads](http://img.shields.io/nuget/dt/aloWAMP.svg?label=NuGET%20downloads&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist downloads](https://img.shields.io/packagist/dt/alorel/alo-wamp.svg?style=plastic&label=Packagist%20downloads)](https://packagist.org/packages/alorel/alo-wamp) 
+[![Licence](https://poser.pugx.org/alorel/alo-framework/license)](LICENCE) [![NuGet release](http://img.shields.io/nuget/v/aloWAMP.svg?label=nuget&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist release](https://img.shields.io/packagist/v/alorel/alo-wamp.svg?style=plastic&label=packagist-stable)](https://packagist.org/packages/alorel/alo-wamp) [![Packagist pre-release](https://img.shields.io/packagist/vpre/alorel/alo-wamp.svg?style=plastic&label=packagist-dev)](https://packagist.org/packages/alorel/alo-wamp) [![NuGET downloads](http://img.shields.io/nuget/dt/aloWAMP.svg?label=nuget&style=plastic)](https://www.nuget.org/packages/AloWAMP/) [![Packagist downloads](https://img.shields.io/packagist/dt/alorel/alo-wamp.svg?style=plastic&label=packagist)](https://packagist.org/packages/alorel/alo-wamp) 
 
 
 # What is this? #
