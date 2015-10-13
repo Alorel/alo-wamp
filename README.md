@@ -35,7 +35,7 @@ AloWAMP is, well, a functioning web-server for Windows machines. It has a Window
 	* This is a required installation to use PHP. Only the 32-bit version is required for AloWAMP, but, if you have a 64-bit machine, I would recommend installing the 64-bit version too as you might need it in future.
 
 # Setup #
-Simply run setup.bat and it will handle everything for you.  **Any batch file should be run with admin privileges**.
+Simply run setup.bat and it will handle everything for you.  **Any batch file should be run with admin privileges**. CLI walkthrough: [https://gist.github.com/Alorel/6d9032469576108dcb0a](https://gist.github.com/Alorel/6d9032469576108dcb0a)
 
 ^[TOC](#table-of-contents)
 
