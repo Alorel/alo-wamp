@@ -25,8 +25,6 @@ AloWAMP is, well, a functioning web-server for Windows machines. It has a Window
 	* [How do you update your binaries?](#how-do-you-update-your-binaries)
 	* [Where do you get your binaries?](#where-do-you-get-your-binaries)
 	* [Which versions do you use?](#which-versions-do-you-use)
-* [Supporting the Project](#supporting-the-project)
-* [Other Alo products](#other-alo-products)
 
 # Why Should I Use This Wamp Stack #
 * **Range of products**. Most WAMPs will only offer PHP, Apache and MySQL while AloWAMP also gives you Memcache and Redis.
@@ -90,15 +88,5 @@ Memcache is hosted on this repository while everything else is fetched from the 
 
 ## Which versions do you use? ##
 To keep everything nice and available, all versions are 32-bit and PHP versions are thread-safe. The only exception is Redis, which is only available for 64-bit processors.
-
-^[TOC](#table-of-contents)
-
-# Supporting the Project #
-Any support is greatly appreciated - whether you're able to [send a Paypal donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UEPH3KQJKEQDE), [become a ClixSense referral](http://www.clixsense.com/?r=4639931&c=alo-wamp&s=102) or simply [drop an email](mailto:a.molcanovas@gmail.com) I'll be very grateful. :)
-
-^[TOC](#table-of-contents)
-
-# Other Alo Products #
-You can find other open source Alo products at [alorel.weebly.com](http://alorel.weebly.com/).
 
 ^[TOC](#table-of-contents)
