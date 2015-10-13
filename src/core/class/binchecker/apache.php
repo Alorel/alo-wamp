@@ -54,7 +54,7 @@
 
          $xpath = new DOMXPath($d);
 
-         $versions = $xpath->query('//a[starts-with(@href, "/download/VC11/binaries/")]');
+         $versions = $xpath->query('//a[starts-with(@href, "/download/VC14/binaries/")]');
 
          /** @var DOMNode $v */
          foreach($versions as $v) {
