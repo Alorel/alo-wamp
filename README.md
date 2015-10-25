@@ -31,8 +31,9 @@ AloWAMP is, well, a functioning web-server for Windows machines. It has a Window
 * **Most up-to date binaries, always**. It's easy to update to a new version of a binary from within AloWAMP (be sure to actually switch to it afterwards); most WAMPs only offer pre-installed versions and take ages to update them.
 
 # Requirements #
-* [Visual C++ Redistributable for Visual Studio 2012](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
+* [Visual C++ Redistributable for Visual Studio 2012 (VC11)](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
 	* This is a required installation to use PHP. Only the 32-bit version is required for AloWAMP, but, if you have a 64-bit machine, I would recommend installing the 64-bit version too as you might need it in future.
+* For apache you'll need  VC14
 
 # Setup #
 Simply run setup.bat and it will handle everything for you.  **Any batch file should be run with admin privileges**. CLI walkthrough: [https://gist.github.com/Alorel/6d9032469576108dcb0a](https://gist.github.com/Alorel/6d9032469576108dcb0a)
